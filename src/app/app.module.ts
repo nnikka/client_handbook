@@ -7,9 +7,6 @@ import { RouterModule } from '@angular/router';
 import { PrimengModule } from './primeng/primeng.module'
 import { CoreModule } from './core/core.module'
 
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -23,7 +20,6 @@ import { AppComponent } from './app.component';
     ReactiveFormsModule,
     PrimengModule,
     CoreModule,
-    AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([])
   ],
   providers: [],
