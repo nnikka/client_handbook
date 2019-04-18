@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.ui-menubar .ui-menubar-custom {
+  float: left !important;
+}
+.ui-menubar p-menubarsub {
+  float: right;
+}
+.ch-vert-center {
+  text-align: center;
+}
