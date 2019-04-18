@@ -1,0 +1,13 @@
+{
+  "currency": [
+    "GEL", "USD", "EUR", "RUB"
+  ],
+  "deposit_type": [
+    "current", "savings", "accumulative"
+  ],
+  "deposit_status": [
+    "active", "closed"
+  ],
+  "clients": [],
+  "deposits": []
+}
