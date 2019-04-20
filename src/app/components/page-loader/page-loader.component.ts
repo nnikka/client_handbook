@@ -7,19 +7,13 @@ import {
   NavigationCancel,
   NavigationError
 } from '@angular/router'
-import { animate, state, style, transition, trigger } from '@angular/animations'
+import FadeInOutAnimation from '../../animations/fadeInOut.animation'
 
 @Component({
   selector: 'app-page-loader',
   templateUrl: './page-loader.component.html',
   styleUrls: ['./page-loader.component.css'],
-  animations: [
-    trigger('loadingAnimation', [
-      transition(':enter', [style({ opacity: '0' }), animate(300)]),
-      transition(':leave', [animate(300, style({ opacity: '0' }))]),
-      state('*', style({ opacity: '1' }))
-    ])
-  ]
+  animations: [FadeInOutAnimation]
 })
 export class PageLoaderComponent implements OnInit {
   loading: boolean = true

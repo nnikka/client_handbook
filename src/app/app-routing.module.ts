@@ -9,12 +9,13 @@ import { CurrencyGuard } from './guards/currency.guard'
 import { DepositTypeGuard } from './guards/deposit-type.guard'
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'error', component: ErrorComponent },
+  { path: '', component: HomeComponent, data: {animation: 'Home'} },
+  { path: 'error', component: ErrorComponent, data: {animation: 'Error'} },
   {
     path: 'add_client',
     component: AddUserComponent,
-    canActivate: [CurrencyGuard, DepositTypeGuard]
+    canActivate: [CurrencyGuard, DepositTypeGuard],
+    data: {animation: 'AddClient'}
   }
 ]
 
