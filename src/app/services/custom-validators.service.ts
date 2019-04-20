@@ -14,8 +14,8 @@ export class CustomValidatorsService extends Validators {
   }
 
   static base64Image(control: FormControl) {
-    let type = control.value.split('/')[0]
-    console.log(type)
+    let type
+    if (control.value) type = control.value.split('/')[0]
     if (type === 'data:image') return null
     return { base64Image: { value: control.value } }
   }

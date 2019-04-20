@@ -8,6 +8,8 @@ import { MessageModule } from 'primeng/message'
 import { CardModule } from 'primeng/card'
 import { InputTextModule } from 'primeng/inputtext'
 import { DropdownModule } from 'primeng/dropdown'
+import { ToastModule } from 'primeng/toast'
+import { MessageService } from 'primeng/api'
 
 @NgModule({
   declarations: [],
@@ -20,7 +22,8 @@ import { DropdownModule } from 'primeng/dropdown'
     MessageModule,
     CardModule,
     InputTextModule,
-    DropdownModule
+    DropdownModule,
+    ToastModule
   ],
   exports: [
     ButtonModule,
@@ -30,7 +33,9 @@ import { DropdownModule } from 'primeng/dropdown'
     MessageModule,
     CardModule,
     InputTextModule,
-    DropdownModule
-  ]
+    DropdownModule,
+    ToastModule
+  ],
+  providers: [MessageService]
 })
 export class PrimengModule {}

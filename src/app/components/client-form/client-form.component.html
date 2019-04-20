@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="handleSave()">
   <div><br></div>
   <div class="ch-form-upload-image">
     <img [src]="imageSrc" />
@@ -102,6 +102,6 @@
   </div>
   <br>
   <div>
-    <button pButton type="button" label="Save" [disabled]="!form.valid"></button>
+    <button pButton type="button" label="Save" [disabled]="!form.valid" type="submit"></button>
   </div>
 </form>

@@ -27,7 +27,8 @@ import { AddUserComponent as AddUserContainerComponent } from './containers/add-
 import { ErrorComponent } from './components/error/error.component'
 import { PageLoaderComponent } from './components/page-loader/page-loader.component'
 import { ClientFormComponent } from './components/client-form/client-form.component';
-import { FileInputComponent } from './components/file-input/file-input.component'
+import { FileInputComponent } from './components/file-input/file-input.component';
+import { ComponentLoaderOverlayComponent } from './components/component-loader-overlay/component-loader-overlay.component'
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FileInputComponent } from './components/file-input/file-input.component
     ErrorComponent,
     PageLoaderComponent,
     ClientFormComponent,
-    FileInputComponent
+    FileInputComponent,
+    ComponentLoaderOverlayComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,10 @@
     <div class="ui-g-12 ui-md-2 ui-lg-4"></div>
     <div class="ui-g-12 ui-md-8 ui-lg-4">
       <p-card header="Add client">
-        <app-client-form [genders]="genders$ | async"></app-client-form>
+        <div class="ch-pos-relative">
+          <app-component-loader-overlay [loading]="loading"></app-component-loader-overlay>
+          <app-client-form [genders]="genders$ | async" (onSave)="handleSave($event)"></app-client-form>
+        </div>
       </p-card>
     </div>
     <div class="ui-g-12 ui-md-2 ui-lg-4"></div>

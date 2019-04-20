@@ -10,3 +10,6 @@ body {
 .ch-vert-center {
   text-align: center;
 }
+.ch-pos-relative {
+  position: relative;
+}

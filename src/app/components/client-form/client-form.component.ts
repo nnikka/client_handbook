@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core'
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { SelectItem } from 'primeng/api'
 import { CustomValidatorsService } from '../../services/custom-validators.service'
 
@@ -10,6 +10,8 @@ import { CustomValidatorsService } from '../../services/custom-validators.servic
 })
 export class ClientFormComponent implements OnInit {
   @Input() genders: string[]
+  @Input() clearOnSubmit: boolean = true
+  @Output() onSave: EventEmitter<any> = new EventEmitter<any>()
 
   get selectGenders(): SelectItem[] {
     let result: SelectItem[] = []
@@ -33,10 +35,12 @@ export class ClientFormComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       firstName: [
-        '', [Validators.required, CustomValidatorsService.onlyGeoOrLatLetters]
+        '',
+        [Validators.required, CustomValidatorsService.onlyGeoOrLatLetters]
       ],
       lastName: [
-        '', [Validators.required, CustomValidatorsService.onlyGeoOrLatLetters]
+        '',
+        [Validators.required, CustomValidatorsService.onlyGeoOrLatLetters]
       ],
       personalNumber: [
         '',
@@ -56,7 +60,15 @@ export class ClientFormComponent implements OnInit {
       actualAddress: ['', [Validators.required]],
       image: ['', [Validators.required, CustomValidatorsService.base64Image]]
     })
+  }
 
-    this.form.valueChanges.subscribe(a => console.log(a))
+  handleSave() {
+    this.onSave.emit(this.form.value)
+    if (this.clearOnSubmit) {
+      this.form.reset()
+      for (let i in this.form.controls) {
+        this.form.controls[i].setErrors(null)
+      }
+    }
   }
 }
