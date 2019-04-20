@@ -10,7 +10,7 @@ export const selectDepositTypes = createSelector(
   (state: IDepositTypeState) => state.depositTypes
 )
 
-export const selectDepositTypeFetchStatus = createSelector(
+export const selectDepositTypeLoadStatus = createSelector(
   selectDepositType,
-  (state: IDepositTypeState) => state.isFetching
+  (state: IDepositTypeState) => state.loaded
 )

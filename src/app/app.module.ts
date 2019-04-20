@@ -16,15 +16,21 @@ import { appReducers } from './store/reducers/app.reducers';
 import { CurrencyEffects } from './store/effects/currency.effects'
 import { DepositTypeEffects } from './store/effects/depositType.effects'
 
-//components ang containers
+//components and containers
 import { HomeComponent } from './components/home/home.component'
-import { NavBarComponent } from './components/nav-bar/nav-bar.component'
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { AddUserComponent as AddUserContainerComponent } from './containers/add-user/add-user.component';
+import { ErrorComponent } from './components/error/error.component';
+import { PageLoaderComponent } from './components/page-loader/page-loader.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavBarComponent
+    NavBarComponent,
+    AddUserContainerComponent,
+    ErrorComponent,
+    PageLoaderComponent
   ],
   imports: [
     BrowserModule,

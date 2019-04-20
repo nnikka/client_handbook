@@ -10,7 +10,7 @@ export const currencyReducer = (
       return {
         ...state,
         currecies: action.payload,
-        isFetching: false
+        loaded: true
       }
     }
     default:

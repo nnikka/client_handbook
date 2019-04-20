@@ -21,7 +21,8 @@ export class NavBarComponent implements OnInit {
       },
       {
         label: 'Add client',
-        icon: 'pi pi-fw pi-user-plus'
+        icon: 'pi pi-fw pi-user-plus',
+        routerLink: ['/add_client']
       },
       {
         label: 'Clients',

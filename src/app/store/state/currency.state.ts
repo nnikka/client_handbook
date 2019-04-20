@@ -1,9 +1,9 @@
 export interface ICurrencyState {
   currecies: string[],
-  isFetching: boolean
+  loaded: boolean
 }
 
 export const initialCurrencyState = {
   currecies: [],
-  isFetching: true
+  loaded: false
 }

@@ -10,7 +10,7 @@ export const depositTypeReducer = (
       return {
         ...state,
         depositTypes: action.payload,
-        isFetching: false
+        loaded: true
       }
     }
     default:

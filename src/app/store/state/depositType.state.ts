@@ -1,9 +1,9 @@
 export interface IDepositTypeState {
   depositTypes: string[],
-  isFetching: boolean
+  loaded: boolean
 }
 
 export const initialDepositTypeState = {
   depositTypes: [],
-  isFetching: true
+  loaded: false
 }

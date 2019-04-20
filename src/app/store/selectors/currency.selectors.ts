@@ -10,7 +10,7 @@ export const selectCurrencies = createSelector(
   (state: ICurrencyState) => state.currecies
 )
 
-export const selectCurrencyFetchStatus = createSelector(
+export const selectCurrencyLoadStatus = createSelector(
   selectCurrency,
-  (state: ICurrencyState) => state.isFetching
+  (state: ICurrencyState) => state.loaded
 )
