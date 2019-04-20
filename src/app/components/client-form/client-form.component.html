@@ -1,5 +1,17 @@
 <form [formGroup]="form">
   <div><br></div>
+  <div class="ch-form-upload-image">
+    <img [src]="imageSrc" />
+    <app-file-input class="ch-file-input" formControlName="image" accept="image/*"></app-file-input>
+    <div>
+      <p-message severity="error" text="Image is required"
+        *ngIf="form.get('image').hasError('required') && form.controls['image'].touched"></p-message>
+      <p-message severity="error" text="Upload only image" *ngIf="form.get('image').hasError('base64Image') && form.controls['image'].touched
+        && !form.get('image').hasError('required')">
+      </p-message>
+    </div>
+  </div>
+  <p class="ch-form-sub-header"><strong>Personal information</strong></p>
   <div>
     <span class="ui-float-label">
       <input id="float-input" type="text" size="30" pInputText formControlName="firstName">
@@ -7,7 +19,7 @@
     </span>
     <p-message severity="error" text="First name is required"
       *ngIf="form.get('firstName').hasError('required') && form.controls['firstName'].touched"></p-message>
-    <p-message severity="error" text="Only Georgian or Latin letters" *ngIf="form.get('firstName').hasError('georgianOrLatinPattern') && form.controls['firstName'].touched
+    <p-message severity="error" text="Only Georgian or Latin letters" *ngIf="form.get('firstName').hasError('onlyGeoOrLatLetters') && form.controls['firstName'].touched
       && !form.get('firstName').hasError('required')">
     </p-message>
   </div>
@@ -18,7 +30,7 @@
     </span>
     <p-message severity="error" text="Last name is required"
       *ngIf="form.get('lastName').hasError('required') && form.controls['lastName'].touched"></p-message>
-    <p-message severity="error" text="Only Georgian or Latin letters" *ngIf="form.get('lastName').hasError('georgianOrLatinPattern') && form.controls['lastName'].touched
+    <p-message severity="error" text="Only Georgian or Latin letters" *ngIf="form.get('lastName').hasError('onlyGeoOrLatLetters') && form.controls['lastName'].touched
         && !form.get('lastName').hasError('required')">
     </p-message>
   </div>
@@ -87,5 +99,9 @@
     </span>
     <p-message severity="error" text="Address is required"
       *ngIf="!form.controls['actualAddress'].valid && form.controls['actualAddress'].touched"></p-message>
+  </div>
+  <br>
+  <div>
+    <button pButton type="button" label="Save" [disabled]="!form.valid"></button>
   </div>
 </form>

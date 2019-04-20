@@ -1,15 +1,29 @@
 .ui-float-label input {
   width: 100%;
 }
+
 .ui-float-label {
   margin-bottom: 5px;
   margin-top: 20px;
 }
+
 .ch-form-sub-header {
   margin-top: 20px;
   margin-bottom: 0px;
 }
+
 .ch-dropdown-container {
   margin-bottom: 5px;
   margin-top: 20px;
+}
+
+.ch-form-upload-image img{
+  width: 6rem;
+  height: auto;
+}
+
+.ch-form-upload-image .ch-file-input {
+  display: inline-block;
+  float: right;
+  margin-top: 2rem;
 }

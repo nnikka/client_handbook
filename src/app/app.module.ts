@@ -26,7 +26,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component'
 import { AddUserComponent as AddUserContainerComponent } from './containers/add-user/add-user.component'
 import { ErrorComponent } from './components/error/error.component'
 import { PageLoaderComponent } from './components/page-loader/page-loader.component'
-import { ClientFormComponent } from './components/client-form/client-form.component'
+import { ClientFormComponent } from './components/client-form/client-form.component';
+import { FileInputComponent } from './components/file-input/file-input.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ClientFormComponent } from './components/client-form/client-form.compon
     AddUserContainerComponent,
     ErrorComponent,
     PageLoaderComponent,
-    ClientFormComponent
+    ClientFormComponent,
+    FileInputComponent
   ],
   imports: [
     BrowserModule,
