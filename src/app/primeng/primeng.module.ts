@@ -6,7 +6,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner'
 import { MessagesModule } from 'primeng/messages'
 import { MessageModule } from 'primeng/message'
 import { CardModule } from 'primeng/card'
-import {InputTextModule} from 'primeng/inputtext';
+import { InputTextModule } from 'primeng/inputtext'
+import { DropdownModule } from 'primeng/dropdown'
 
 @NgModule({
   declarations: [],
@@ -18,7 +19,8 @@ import {InputTextModule} from 'primeng/inputtext';
     MessagesModule,
     MessageModule,
     CardModule,
-    InputTextModule
+    InputTextModule,
+    DropdownModule
   ],
   exports: [
     ButtonModule,
@@ -27,7 +29,8 @@ import {InputTextModule} from 'primeng/inputtext';
     MessagesModule,
     MessageModule,
     CardModule,
-    InputTextModule
+    InputTextModule,
+    DropdownModule
   ]
 })
 export class PrimengModule {}

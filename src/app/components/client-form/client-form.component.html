@@ -30,6 +30,14 @@
     <p-message severity="error" text="Personal number must be 11 digits"
       *ngIf="!form.controls['personalNumber'].valid && form.controls['personalNumber'].touched"></p-message>
   </div>
+  <div>
+    <div class="ch-dropdown-container">
+      <p-dropdown [options]="selectGenders" formControlName="gender" placeholder="Select gender">
+      </p-dropdown>
+    </div>
+    <p-message severity="error" text="Gender is required"
+      *ngIf="!form.controls['gender'].valid && form.controls['gender'].touched"></p-message>
+  </div>
   <p class="ch-form-sub-header"><strong>Legal Address</strong></p>
   <div>
     <span class="ui-float-label">

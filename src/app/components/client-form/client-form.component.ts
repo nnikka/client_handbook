@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
+import { SelectItem } from 'primeng/api'
 
 @Component({
   selector: 'app-client-form',
@@ -8,7 +9,13 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class ClientFormComponent implements OnInit {
   @Input() genders: string[]
-
+  get selectGenders(): SelectItem[] {
+    let result: SelectItem[] = []
+    this.genders.forEach(item => {
+      result.push({ label: item, value: item })
+    })
+    return result
+  }
   form: FormGroup
 
   constructor(private formBuilder: FormBuilder) {}
