@@ -1,0 +1,83 @@
+<form [formGroup]="form">
+  <div><br></div>
+  <div>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="firstName">
+      <label for="float-input">First name</label>
+    </span>
+    <p-message severity="error" text="First name is required"
+      *ngIf="form.get('firstName').hasError('required') && form.controls['firstName'].touched"></p-message>
+    <p-message severity="error" text="Only Georgian or Latin letters" *ngIf="form.get('firstName').hasError('georgianOrLatinPattern') && form.controls['firstName'].touched
+      && !form.get('firstName').hasError('required')">
+    </p-message>
+  </div>
+  <div>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="lastName">
+      <label for="float-input">Last name</label>
+    </span>
+    <p-message severity="error" text="Last name is required"
+      *ngIf="form.get('lastName').hasError('required') && form.controls['lastName'].touched"></p-message>
+    <p-message severity="error" text="Only Georgian or Latin letters" *ngIf="form.get('lastName').hasError('georgianOrLatinPattern') && form.controls['lastName'].touched
+        && !form.get('lastName').hasError('required')">
+    </p-message>
+  </div>
+  <div>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="personalNumber">
+      <label for="float-input">Personal number</label>
+    </span>
+    <p-message severity="error" text="Personal number must be 11 digits"
+      *ngIf="!form.controls['personalNumber'].valid && form.controls['personalNumber'].touched"></p-message>
+  </div>
+  <p class="ch-form-sub-header"><strong>Legal Address</strong></p>
+  <div>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="legalCountry">
+      <label for="float-input">Country</label>
+    </span>
+    <p-message severity="error" text="Country is required"
+      *ngIf="!form.controls['legalCountry'].valid && form.controls['legalCountry'].touched"></p-message>
+  </div>
+  <div>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="legalCity">
+      <label for="float-input">City</label>
+    </span>
+    <p-message severity="error" text="City is required"
+      *ngIf="!form.controls['legalCity'].valid && form.controls['legalCity'].touched"></p-message>
+  </div>
+  <div>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="legalAddress">
+      <label for="float-input">Address</label>
+    </span>
+    <p-message severity="error" text="Address is required"
+      *ngIf="!form.controls['legalAddress'].valid && form.controls['legalAddress'].touched"></p-message>
+  </div>
+  <p class="ch-form-sub-header"><strong>Actual Address</strong></p>
+  <div>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="actualCountry">
+      <label for="float-input">Country</label>
+    </span>
+    <p-message severity="error" text="Country is required"
+      *ngIf="!form.controls['actualCountry'].valid && form.controls['actualCountry'].touched"></p-message>
+  </div>
+  <div>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="actualCity">
+      <label for="float-input">City</label>
+    </span>
+    <p-message severity="error" text="City is required"
+      *ngIf="!form.controls['actualCity'].valid && form.controls['actualCity'].touched"></p-message>
+  </div>
+  <div>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText formControlName="actualAddress">
+      <label for="float-input">Address</label>
+    </span>
+    <p-message severity="error" text="Address is required"
+      *ngIf="!form.controls['actualAddress'].valid && form.controls['actualAddress'].touched"></p-message>
+  </div>
+</form>

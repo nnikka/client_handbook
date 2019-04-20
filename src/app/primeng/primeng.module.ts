@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
-import { MenubarModule } from 'primeng/menubar';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { ButtonModule } from 'primeng/button'
+import { MenubarModule } from 'primeng/menubar'
+import { ProgressSpinnerModule } from 'primeng/progressspinner'
+import { MessagesModule } from 'primeng/messages'
+import { MessageModule } from 'primeng/message'
+import { CardModule } from 'primeng/card'
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [],
@@ -14,14 +16,18 @@ import {MessageModule} from 'primeng/message';
     MenubarModule,
     ProgressSpinnerModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    CardModule,
+    InputTextModule
   ],
   exports: [
     ButtonModule,
     MenubarModule,
     ProgressSpinnerModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    CardModule,
+    InputTextModule
   ]
 })
-export class PrimengModule { }
+export class PrimengModule {}

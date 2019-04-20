@@ -7,6 +7,7 @@ import { AddUserComponent } from './containers/add-user/add-user.component'
 
 import { CurrencyGuard } from './guards/currency.guard'
 import { DepositTypeGuard } from './guards/deposit-type.guard'
+import { GenderGuard } from './guards/gender.guard'
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: {animation: 'Home'} },
@@ -14,7 +15,7 @@ const routes: Routes = [
   {
     path: 'add_client',
     component: AddUserComponent,
-    canActivate: [CurrencyGuard, DepositTypeGuard],
+    canActivate: [GenderGuard],
     data: {animation: 'AddClient'}
   }
 ]

@@ -5,6 +5,9 @@
   "deposit_types": [
     "current", "savings", "accumulative"
   ],
+  "genders": [
+    "male", "female"
+  ],
   "deposit_statuses": [
     "active", "closed"
   ],

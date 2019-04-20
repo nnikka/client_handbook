@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { environment } from '../environments/environment'
 import { PrimengModule } from './primeng/primeng.module'
 import { AppComponent } from './app.component'
@@ -15,6 +15,10 @@ import { EffectsModule } from '@ngrx/effects'
 import { appReducers } from './store/reducers/app.reducers'
 import { CurrencyEffects } from './store/effects/currency.effects'
 import { DepositTypeEffects } from './store/effects/depositType.effects'
+import { GenderEffects } from './store/effects/gender.effects'
+
+//http interceptor
+import { HttpConfigInterceptor } from './httpConfig/httpConfig.interceptor'
 
 //components and containers
 import { HomeComponent } from './components/home/home.component'
@@ -22,9 +26,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component'
 import { AddUserComponent as AddUserContainerComponent } from './containers/add-user/add-user.component'
 import { ErrorComponent } from './components/error/error.component'
 import { PageLoaderComponent } from './components/page-loader/page-loader.component'
-
-//http interceptor
-import { HttpConfigInterceptor } from './httpConfig/httpConfig.interceptor'
+import { ClientFormComponent } from './components/client-form/client-form.component'
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { HttpConfigInterceptor } from './httpConfig/httpConfig.interceptor'
     NavBarComponent,
     AddUserContainerComponent,
     ErrorComponent,
-    PageLoaderComponent
+    PageLoaderComponent,
+    ClientFormComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { HttpConfigInterceptor } from './httpConfig/httpConfig.interceptor'
     AppRoutingModule,
     //ngrx store
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([CurrencyEffects, DepositTypeEffects]),
+    EffectsModule.forRoot([CurrencyEffects, DepositTypeEffects, GenderEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [

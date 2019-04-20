@@ -1,0 +1,11 @@
+.ui-float-label input {
+  width: 100%;
+}
+.ui-float-label {
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+.ch-form-sub-header {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
