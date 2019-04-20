@@ -2,7 +2,8 @@ import { Action } from '@ngrx/store'
 
 export enum EDepositTypeActions {
   GetDepositTypes = '[DepositType] Get DepositTypes',
-  GetDepositTypesSuccess = '[DepositType] Get DepositTypes Success'
+  GetDepositTypesSuccess = '[DepositType] Get DepositTypes Success',
+  GetDepositTypesFailed = '[DepositType] Get DepositTypes Failed'
 }
 
 export class GetDepositTypes implements Action {
@@ -14,4 +15,8 @@ export class GetDepositTypesSuccess implements Action {
   constructor(public payload: string[]) {}
 }
 
-export type DepositTypeActions = GetDepositTypes | GetDepositTypesSuccess
+export class GetDepositTypesFailed implements Action {
+  public readonly type = EDepositTypeActions.GetDepositTypesFailed
+}
+
+export type DepositTypeActions = GetDepositTypes | GetDepositTypesSuccess | GetDepositTypesFailed

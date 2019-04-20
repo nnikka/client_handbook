@@ -13,6 +13,12 @@ export const currencyReducer = (
         loaded: true
       }
     }
+    case ECurrencyActions.GetCurrenciesFailed: {
+      return {
+        ...state,
+        ...initialCurrencyState
+      }
+    }
     default:
       return state
   }

@@ -1,5 +1,11 @@
-import { EDepositTypeActions, DepositTypeActions } from '../actions/depositType.action'
-import { IDepositTypeState, initialDepositTypeState } from '../state/depositType.state'
+import {
+  EDepositTypeActions,
+  DepositTypeActions
+} from '../actions/depositType.action'
+import {
+  IDepositTypeState,
+  initialDepositTypeState
+} from '../state/depositType.state'
 
 export const depositTypeReducer = (
   state = initialDepositTypeState,
@@ -11,6 +17,12 @@ export const depositTypeReducer = (
         ...state,
         depositTypes: action.payload,
         loaded: true
+      }
+    }
+    case EDepositTypeActions.GetDepositTypesFailed: {
+      return {
+        ...state,
+        ...initialDepositTypeState
       }
     }
     default:

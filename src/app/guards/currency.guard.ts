@@ -18,7 +18,9 @@ export class CurrencyGuard implements CanActivate {
     return this.store.pipe(
       select(selectCurrencyLoadStatus),
       tap(loaded => {
-        if (!loaded) this.store.dispatch(new GetCurrencies())
+        if (!loaded) {
+          this.store.dispatch(new GetCurrencies())
+        }
       }),
       filter(loaded => loaded),
       take(1)

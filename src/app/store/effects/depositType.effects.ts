@@ -1,21 +1,33 @@
-import { Injectable } from '@angular/core';
-import { Effect, ofType, Actions } from '@ngrx/effects';
-import { of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Injectable } from '@angular/core'
+import { Effect, ofType, Actions } from '@ngrx/effects'
+import { of } from 'rxjs'
+import { switchMap, map, catchError } from 'rxjs/operators'
 
 import { DepositTypeService } from '../../services/deposit-type.service'
-import { EDepositTypeActions, GetDepositTypes, GetDepositTypesSuccess } from '../actions/depositType.action'
+import {
+  EDepositTypeActions,
+  GetDepositTypes,
+  GetDepositTypesSuccess,
+  GetDepositTypesFailed
+} from '../actions/depositType.action'
 
 @Injectable()
 export class DepositTypeEffects {
   @Effect()
   getDepositTypes$ = this._actions.pipe(
     ofType<GetDepositTypes>(EDepositTypeActions.GetDepositTypes),
-    switchMap(() => this._depositTypeService.getDepositTypes()),
-    switchMap((currencies: string[]) => {
-      return of(new GetDepositTypesSuccess(currencies))
+    switchMap(() => {
+      return this._depositTypeService.getDepositTypes().pipe(
+        map(
+          (depositTypes: string[]) => new GetDepositTypesSuccess(depositTypes)
+        ),
+        catchError(error => of(new GetDepositTypesFailed()))
+      )
     })
-  );
+  )
 
-  constructor(private _actions: Actions, private _depositTypeService: DepositTypeService) {}
+  constructor(
+    private _actions: Actions,
+    private _depositTypeService: DepositTypeService
+  ) {}
 }

@@ -2,7 +2,8 @@ import { Action } from '@ngrx/store'
 
 export enum ECurrencyActions {
   GetCurrencies = '[Currency] Get Currencies',
-  GetCurrenciesSuccess = '[Currency] Get Currencies Success'
+  GetCurrenciesSuccess = '[Currency] Get Currencies Success',
+  GetCurrenciesFailed = '[Currency] Get Currencies Failed'
 }
 
 export class GetCurrencies implements Action {
@@ -14,4 +15,8 @@ export class GetCurrenciesSuccess implements Action {
   constructor(public payload: string[]) {}
 }
 
-export type CurrencyActions = GetCurrencies | GetCurrenciesSuccess
+export class GetCurrenciesFailed implements Action {
+  public readonly type = ECurrencyActions.GetCurrenciesFailed
+}
+
+export type CurrencyActions = GetCurrencies | GetCurrenciesSuccess | GetCurrenciesFailed
