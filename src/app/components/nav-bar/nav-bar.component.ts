@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { Component, OnInit } from '@angular/core'
+import { MenuItem } from 'primeng/api'
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,10 +7,9 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  menuItems: MenuItem[]
 
-  menuItems: MenuItem[];
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.menuItems = [
@@ -26,9 +25,10 @@ export class NavBarComponent implements OnInit {
       },
       {
         label: 'Clients',
-        icon: 'pi pi-fw pi-user'
+        icon: 'pi pi-fw pi-user',
+        routerLink: ['/clients'],
+        routerLinkActiveOptions: { exact: true }
       }
     ]
   }
-
 }

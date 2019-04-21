@@ -15,4 +15,8 @@ export class ClientService {
   create(user: IUser): Observable<any> {
     return this._http.post(this.createClientUrl, user)
   }
+
+  getClient() {
+   // return this._http.get()
+  }
 }

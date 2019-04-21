@@ -26,9 +26,11 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component'
 import { AddUserComponent as AddUserContainerComponent } from './containers/add-user/add-user.component'
 import { ErrorComponent } from './components/error/error.component'
 import { PageLoaderComponent } from './components/page-loader/page-loader.component'
-import { ClientFormComponent } from './components/client-form/client-form.component';
-import { FileInputComponent } from './components/file-input/file-input.component';
+import { ClientFormComponent } from './components/client-form/client-form.component'
+import { FileInputComponent } from './components/file-input/file-input.component'
 import { ComponentLoaderOverlayComponent } from './components/component-loader-overlay/component-loader-overlay.component'
+import { ClientsComponent as ClientsContainer } from './containers/clients/clients.component'
+import { DataFilterComponent } from './components/data-filter/data-filter.component'
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ComponentLoaderOverlayComponent } from './components/component-loader-o
     PageLoaderComponent,
     ClientFormComponent,
     FileInputComponent,
-    ComponentLoaderOverlayComponent
+    ComponentLoaderOverlayComponent,
+    ClientsContainer,
+    DataFilterComponent
   ],
   imports: [
     BrowserModule,

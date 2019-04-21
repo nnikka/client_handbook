@@ -19,4 +19,13 @@ export class CustomValidatorsService extends Validators {
     if (type === 'data:image') return null
     return { base64Image: { value: control.value } }
   }
+
+  static onlyWhitespace(control: FormControl) {
+    if (control.value.length > 0) {
+      const isWhitespace = (control.value || '').trim().length === 0
+      const isValid = !isWhitespace
+      return isValid ? null : { onlyWhitespace: true }
+    }
+    return null
+  }
 }

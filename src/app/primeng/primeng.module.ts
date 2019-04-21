@@ -10,6 +10,7 @@ import { InputTextModule } from 'primeng/inputtext'
 import { DropdownModule } from 'primeng/dropdown'
 import { ToastModule } from 'primeng/toast'
 import { MessageService } from 'primeng/api'
+import { AccordionModule } from 'primeng/accordion'
 
 @NgModule({
   declarations: [],
@@ -23,7 +24,8 @@ import { MessageService } from 'primeng/api'
     CardModule,
     InputTextModule,
     DropdownModule,
-    ToastModule
+    ToastModule,
+    AccordionModule
   ],
   exports: [
     ButtonModule,
@@ -34,7 +36,8 @@ import { MessageService } from 'primeng/api'
     CardModule,
     InputTextModule,
     DropdownModule,
-    ToastModule
+    ToastModule,
+    AccordionModule
   ],
   providers: [MessageService]
 })

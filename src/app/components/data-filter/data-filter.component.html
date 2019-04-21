@@ -1,0 +1,29 @@
+<p-accordion>
+  <p-accordionTab header="Filter">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-6 ui-lg-3" *ngFor="let textFilter of textFilters">
+          <span class="ui-float-label ch-filter-input-container">
+            <input id="float-input" type="text" size="30" pInputText [formControlName]="textFilter.name">
+            <label for="float-input">{{textFilter.label}}</label>
+          </span>
+          <p-message severity="error" text="Field should not contain empty text"
+            *ngIf="!form.controls[textFilter.name].valid"></p-message>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3" *ngFor="let dropDownFilter of dropDownFilters">
+          <span class="ui-float-label ch-filter-input-container">
+            <p-dropdown class="ch-filter-dropdown" [options]="createDropDownOption(dropDownFilter.options)"
+              [formControlName]="dropDownFilter.name" [placeholder]="dropDownFilter.label">
+            </p-dropdown>
+          </span>
+        </div>
+      </div>
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <button [disabled]="!form.valid" class="ch-filter-action" pButton type="button" label="Filter"
+            type="submit"></button>
+        </div>
+      </div>
+    </form>
+  </p-accordionTab>
+</p-accordion>
