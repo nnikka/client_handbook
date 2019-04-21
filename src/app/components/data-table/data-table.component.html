@@ -1,0 +1,21 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <div class="ch-data-table-loading" *ngIf="!loaded; else chDataTable">
+      <strong>Loading...</strong>
+    </div>
+    <ng-template #chDataTable>
+      <p-table [columns]="config" [value]="cols">
+        <ng-template pTemplate="header">
+          <tr>
+            <th *ngFor="let item of config">{{item.header}}</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-car>
+          <tr>
+            <td *ngFor="let item of config">{{rowData[item.key]}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </ng-template>
+  </div>
+</div>

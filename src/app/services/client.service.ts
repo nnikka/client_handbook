@@ -8,15 +8,15 @@ import { IUser } from '../models/IUser'
   providedIn: 'root'
 })
 export class ClientService {
-  createClientUrl = `${environment.api_url}clients`
+  clientUrl = `${environment.api_url}clients`
 
   constructor(private _http: HttpClient) {}
 
   create(user: IUser): Observable<any> {
-    return this._http.post(this.createClientUrl, user)
+    return this._http.post(this.clientUrl, user)
   }
 
-  getClient() {
-   // return this._http.get()
+  getClients(query: string): Observable<IUser[]> {
+    return this._http.get<IUser[]>(this.clientUrl + query)
   }
 }

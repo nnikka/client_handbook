@@ -16,6 +16,7 @@ import { appReducers } from './store/reducers/app.reducers'
 import { CurrencyEffects } from './store/effects/currency.effects'
 import { DepositTypeEffects } from './store/effects/depositType.effects'
 import { GenderEffects } from './store/effects/gender.effects'
+import { ClientsEffects } from './store/effects/clients.effects'
 
 //http interceptor
 import { HttpConfigInterceptor } from './httpConfig/httpConfig.interceptor'
@@ -30,7 +31,8 @@ import { ClientFormComponent } from './components/client-form/client-form.compon
 import { FileInputComponent } from './components/file-input/file-input.component'
 import { ComponentLoaderOverlayComponent } from './components/component-loader-overlay/component-loader-overlay.component'
 import { ClientsComponent as ClientsContainer } from './containers/clients/clients.component'
-import { DataFilterComponent } from './components/data-filter/data-filter.component'
+import { DataFilterComponent } from './components/data-filter/data-filter.component';
+import { DataTableComponent } from './components/data-table/data-table.component'
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { DataFilterComponent } from './components/data-filter/data-filter.compon
     FileInputComponent,
     ComponentLoaderOverlayComponent,
     ClientsContainer,
-    DataFilterComponent
+    DataFilterComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,12 @@ import { DataFilterComponent } from './components/data-filter/data-filter.compon
     AppRoutingModule,
     //ngrx store
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([CurrencyEffects, DepositTypeEffects, GenderEffects]),
+    EffectsModule.forRoot([
+      CurrencyEffects,
+      DepositTypeEffects,
+      GenderEffects,
+      ClientsEffects
+    ]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [

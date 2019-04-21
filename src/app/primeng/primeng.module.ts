@@ -11,6 +11,7 @@ import { DropdownModule } from 'primeng/dropdown'
 import { ToastModule } from 'primeng/toast'
 import { MessageService } from 'primeng/api'
 import { AccordionModule } from 'primeng/accordion'
+import { TableModule } from 'primeng/table'
 
 @NgModule({
   declarations: [],
@@ -25,7 +26,8 @@ import { AccordionModule } from 'primeng/accordion'
     InputTextModule,
     DropdownModule,
     ToastModule,
-    AccordionModule
+    AccordionModule,
+    TableModule
   ],
   exports: [
     ButtonModule,
@@ -37,7 +39,8 @@ import { AccordionModule } from 'primeng/accordion'
     InputTextModule,
     DropdownModule,
     ToastModule,
-    AccordionModule
+    AccordionModule,
+    TableModule
   ],
   providers: [MessageService]
 })

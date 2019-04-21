@@ -1,17 +1,46 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { IDropDownFilter } from '../../models/IDropDownFilter'
 import { selectGenders } from '../../store/selectors/gender.selectors'
 import { ITextFilter } from '../../models/ITextFilter'
 import { Store, select } from '@ngrx/store'
 import { IAppState } from '../../store/state/app.state'
 import { take } from 'rxjs/operators'
+import { ActivatedRoute } from '@angular/router'
+import {
+  GetClients,
+  ClearClientsState
+} from '../../store/actions/clients.action'
+import { HttpHelperService } from '../../services/http-helper.service'
+import { IDataTableCfgItem } from '../../models/IDataTableCfgItem'
+import {
+  selectClients,
+  selectClientsLoadStatus
+} from '../../store/selectors/clients.selectors'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css']
 })
-export class ClientsComponent implements OnInit {
+export class ClientsComponent implements OnInit, OnDestroy {
+  dataTableCfg: IDataTableCfgItem[] = [
+    { key: 'firstName', header: 'First name' },
+    { key: 'lastName', header: 'Last name' },
+    { key: 'personalNumber', header: 'Personal number' },
+    { key: 'legalCountry', header: 'Legal country' },
+    { key: 'legalCity', header: 'Legal city' },
+    { key: 'legalAddress', header: 'Legal address' },
+    { key: 'actualCountry', header: 'Actual country' },
+    { key: 'actualCity', header: 'Actual city' },
+    { key: 'actualAddress', header: 'Actual address' }
+  ]
+
+  dropDownFilters: IDropDownFilter[] = []
+  clients$ = this.store.pipe(select(selectClients))
+  clientsLoadStatus$ = this.store.pipe(select(selectClientsLoadStatus))
+  routeQuerySubscription: Subscription
+
   textFilters: ITextFilter[] = [
     { name: 'firstName', label: 'First name' },
     { name: 'lastName', label: 'Last name' },
@@ -24,9 +53,11 @@ export class ClientsComponent implements OnInit {
     { name: 'actualAddress', label: 'Actual address' }
   ]
 
-  dropDownFilters: IDropDownFilter[] = []
-
-  constructor(private store: Store<IAppState>) {}
+  constructor(
+    private store: Store<IAppState>,
+    private route: ActivatedRoute,
+    private httpHelperService: HttpHelperService
+  ) {}
 
   ngOnInit() {
     this.store
@@ -38,5 +69,19 @@ export class ClientsComponent implements OnInit {
           { name: 'gender', label: 'Gender', options: genders }
         ]
       })
+    this.watchRouteQueryParams()
+  }
+
+  watchRouteQueryParams() {
+    this.routeQuerySubscription = this.route.queryParams.subscribe(query => {
+      this.store.dispatch(
+        new GetClients(this.httpHelperService.objectToQueryString(query))
+      )
+    })
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(new ClearClientsState())
+    this.routeQuerySubscription.unsubscribe()
   }
 }
