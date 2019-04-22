@@ -16,8 +16,26 @@ export const clientReducer = (
     case EClientActions.GetClientFailed: {
       return {
         ...state,
-        ...initialClientState,
         failed: true
+      }
+    }
+    case EClientActions.GetClientDepositsSuccess: {
+      return {
+        ...state,
+        deposits: action.payload,
+        depositsLoaded: true
+      }
+    }
+    case EClientActions.GetClientDepositsFailed: {
+      return {
+        ...state,
+        depositsFailed: true
+      }
+    }
+    case EClientActions.ClientAddDeposit: {
+      return {
+        ...state,
+        deposits: [...state.deposits, action.payload]
       }
     }
     case EClientActions.ClearClientState: {

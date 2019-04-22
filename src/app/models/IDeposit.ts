@@ -1,6 +1,6 @@
 export interface IDeposit {
   id: number,
-  userId: number,
+  clientId: number,
   currency: string,
   depositType: string,
   status: string

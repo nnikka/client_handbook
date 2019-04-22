@@ -43,10 +43,11 @@ export class DepositFormComponent implements OnInit {
   handleSave() {
     this.onSave.emit(this.form.value)
     if (this.clearOnSubmit) {
-      this.form.reset()
-      for (let i in this.form.controls) {
-        this.form.controls[i].setErrors(null)
-      }
+      this.form.reset({
+        currency: null,
+        depositType: null
+      })
+      this.form.markAsUntouched()
     }
   }
 }

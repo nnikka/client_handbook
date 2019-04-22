@@ -21,12 +21,22 @@
           (click)="showAddDepositForm = !showAddDepositForm"></button>
         <p-dialog header="Add new deposit" [(visible)]="showAddDepositForm" [modal]="true" [responsive]="true"
           [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [baseZIndex]="10000">
-          <app-deposit-form [depositTypes]="depositTypes$ | async" [currencies]="currencies$ | async" (onSave)="handleAddDeposit($event)"></app-deposit-form>
+          <app-component-loader-overlay [loading]="depositIsAdding"></app-component-loader-overlay>
+          <app-deposit-form [depositTypes]="depositTypes$ | async" [currencies]="currencies$ | async"
+            (onSave)="handleAddDeposit($event)"></app-deposit-form>
         </p-dialog>
       </div>
       <ng-template #chDepositsHeader>
         <div class="ui-g-12" #chDepositsHeader>
           <span>Deposits</span>
+        </div>
+      </ng-template>
+      <div class="ui-g-12" *ngIf="!(clientDepositsFailed$ | async); else chNoDeposits">
+
+      </div>
+      <ng-template #chNoDeposits>
+        <div class="ui-g-12" #chDepositsHeader>
+          <strong>Failed to load deposits</strong>
         </div>
       </ng-template>
     </div>

@@ -4,18 +4,24 @@ import { IAppState } from '../../store/state/app.state'
 import {
   selectClient,
   selectClientFailStatus,
-  selectClientLoadStatus
+  selectClientLoadStatus,
+  selectClientDeposits,
+  selectClientDepositsFailStatus,
+  selectClientDepositsLoadStatus
 } from '../../store/selectors/client.selectors'
 import { selectGenders } from '../../store/selectors/gender.selectors'
 import {
   GetClient,
   ClearClientState,
-  GetClientSuccess
+  GetClientSuccess,
+  GetClientDeposits,
+  ClientAddDeposit
 } from '../../store/actions/client.action'
 import { selectDepositTypes } from '../../store/selectors/depositType.selectors'
 import { selectCurrencies } from '../../store/selectors/currency.selectors'
 import { ActivatedRoute } from '@angular/router'
 import { ClientService } from '../../services/client.service'
+import { DepositService } from '../../services/deposit.service'
 import { IUser } from '../../models/IUser'
 import { MessageService } from 'primeng/api'
 
@@ -31,10 +37,18 @@ export class ClientComponent implements OnInit, OnDestroy {
   clientFailed$ = this.store.pipe(select(selectClientFailStatus))
   depositTypes$ = this.store.pipe(select(selectDepositTypes))
   currencies$ = this.store.pipe(select(selectCurrencies))
+  clientDeposits$ = this.store.pipe(select(selectClientDeposits))
+  clientDepositsFailed$ = this.store.pipe(
+    select(selectClientDepositsFailStatus)
+  )
+  clientDepositsLoaded$ = this.store.pipe(
+    select(selectClientDepositsLoadStatus)
+  )
 
   clientId: number
   clientIsUpdating: boolean = false
   showAddDepositForm: boolean = false
+  depositIsAdding: boolean = false
 
   get canAddDeposit(): boolean {
     return (
@@ -47,12 +61,14 @@ export class ClientComponent implements OnInit, OnDestroy {
     private store: Store<IAppState>,
     private route: ActivatedRoute,
     private clientService: ClientService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private depositService: DepositService
   ) {}
 
   ngOnInit() {
     this.clientId = parseInt(this.route.snapshot.paramMap.get('id'))
     this.store.dispatch(new GetClient(this.clientId))
+    this.store.dispatch(new GetClientDeposits(this.clientId))
   }
 
   ngOnDestroy() {
@@ -83,6 +99,27 @@ export class ClientComponent implements OnInit, OnDestroy {
   }
 
   handleAddDeposit($event) {
-    console.log($event)
+    this.depositIsAdding = true
+    this.depositService
+      .create({ ...$event, clientId: this.clientId, id: Date.now() })
+      .subscribe(
+        data => {
+          this.store.dispatch(new ClientAddDeposit(data))
+          this.depositIsAdding = false
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Congratulations',
+            detail: 'Deposit has been added successfully'
+          })
+        },
+        error => {
+          this.depositIsAdding = false
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Ooops!!!',
+            detail: 'Deposit has not been added'
+          })
+        }
+      )
   }
 }

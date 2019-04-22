@@ -19,3 +19,18 @@ export const selectClientLoadStatus = createSelector(
   selectClientState,
   (state: IClientState) => state.loaded
 )
+
+export const selectClientDeposits = createSelector(
+  selectClientState,
+  (state: IClientState) => state.deposits
+)
+
+export const selectClientDepositsFailStatus = createSelector(
+  selectClientState,
+  (state: IClientState) => state.depositsFailed
+)
+
+export const selectClientDepositsLoadStatus = createSelector(
+  selectClientState,
+  (state: IClientState) => state.depositsLoaded
+)
