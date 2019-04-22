@@ -3,7 +3,7 @@ import { Effect, ofType, Actions } from '@ngrx/effects'
 import { of } from 'rxjs'
 import { switchMap, map, catchError } from 'rxjs/operators'
 
-import { CurrencyService } from '../../services/currency.service'
+import { CurrencyService } from '../../shared/services/currency.service'
 import {
   ECurrencyActions,
   GetCurrencies,

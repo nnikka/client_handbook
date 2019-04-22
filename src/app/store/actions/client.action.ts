@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store'
-import { IUser } from '../../models/IUser'
-import { IDeposit } from '../../models/IDeposit'
+import { IUser } from '../../client/models/IUser'
+import { IDeposit } from '../../client/models/IDeposit'
 
 export enum EClientActions {
   GetClient = '[Client] Get Client',

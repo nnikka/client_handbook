@@ -3,9 +3,9 @@ import { Effect, ofType, Actions } from '@ngrx/effects'
 import { of } from 'rxjs'
 import { switchMap, map, catchError } from 'rxjs/operators'
 
-import { IUser } from '../../models/IUser'
-import { ClientService } from '../../services/client.service'
-import { DepositService } from '../../services/deposit.service'
+import { IUser } from '../../client/models/IUser'
+import { ClientService } from '../../client/services/client.service'
+import { DepositService } from '../../client/services/deposit.service'
 import {
   EClientActions,
   GetClient,
@@ -15,7 +15,7 @@ import {
   GetClientDepositsSuccess,
   GetClientDepositsFailed
 } from '../actions/client.action'
-import { IDeposit } from '../../models/IDeposit'
+import { IDeposit } from '../../client/models/IDeposit'
 
 @Injectable()
 export class ClientEffects {

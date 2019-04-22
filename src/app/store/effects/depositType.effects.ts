@@ -3,7 +3,7 @@ import { Effect, ofType, Actions } from '@ngrx/effects'
 import { of } from 'rxjs'
 import { switchMap, map, catchError } from 'rxjs/operators'
 
-import { DepositTypeService } from '../../services/deposit-type.service'
+import { DepositTypeService } from '../../shared/services/deposit-type.service'
 import {
   EDepositTypeActions,
   GetDepositTypes,

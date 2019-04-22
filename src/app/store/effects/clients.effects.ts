@@ -3,8 +3,8 @@ import { Effect, ofType, Actions } from '@ngrx/effects'
 import { of } from 'rxjs'
 import { switchMap, map, catchError } from 'rxjs/operators'
 
-import { IUser } from '../../models/IUser'
-import { ClientService } from '../../services/client.service'
+import { IUser } from '../../client/models/IUser'
+import { ClientService } from '../../client/services/client.service'
 import {
   EClientsActions,
   GetClients,

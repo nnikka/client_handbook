@@ -1,4 +1,4 @@
-import { IUser } from '../../models/IUser'
+import { IUser } from '../../client/models/IUser'
 
 export interface IClientsState {
   clients: IUser[],

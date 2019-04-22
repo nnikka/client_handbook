@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { environment } from '../environments/environment'
@@ -22,52 +21,25 @@ import { ClientEffects } from './store/effects/client.effects'
 //http interceptor
 import { HttpConfigInterceptor } from './httpConfig/httpConfig.interceptor'
 
-//components and containers
-import { HomeComponent } from './components/home/home.component'
-import { NavBarComponent } from './components/nav-bar/nav-bar.component'
-import { AddUserComponent as AddUserContainerComponent } from './containers/add-user/add-user.component'
-import { ErrorComponent } from './components/error/error.component'
-import { PageLoaderComponent } from './components/page-loader/page-loader.component'
-import { ClientFormComponent } from './components/client-form/client-form.component'
-import { FileInputComponent } from './components/file-input/file-input.component'
-import { ComponentLoaderOverlayComponent } from './components/component-loader-overlay/component-loader-overlay.component'
-import { ClientsComponent as ClientsContainer } from './containers/clients/clients.component'
-import { DataFilterComponent } from './components/data-filter/data-filter.component'
-import { DataTableComponent } from './components/data-table/data-table.component'
-import { DataPaginatorComponent } from './components/data-paginator/data-paginator.component'
-import { DataSorterComponent } from './components/data-sorter/data-sorter.component'
-import { ClientComponent as ClientContainer } from './containers/client/client.component';
-import { DepositFormComponent } from './components/deposit-form/deposit-form.component';
-import { DepositCardComponent } from './components/deposit-card/deposit-card.component'
+//modules
+import { CoreModule } from './core/core.module'
+import { SharedModule } from './shared/shared.module'
+import { ClientModule } from './client/client.module'
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    NavBarComponent,
-    AddUserContainerComponent,
-    ErrorComponent,
-    PageLoaderComponent,
-    ClientFormComponent,
-    FileInputComponent,
-    ComponentLoaderOverlayComponent,
-    ClientsContainer,
-    DataFilterComponent,
-    DataTableComponent,
-    DataPaginatorComponent,
-    DataSorterComponent,
-    ClientContainer,
-    DepositFormComponent,
-    DepositCardComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
     PrimengModule,
     AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    ClientModule,
     //ngrx store
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([

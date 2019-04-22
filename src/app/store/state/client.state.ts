@@ -1,5 +1,5 @@
-import { IUser } from '../../models/IUser'
-import { IDeposit } from '../../models/IDeposit'
+import { IUser } from '../../client/models/IUser'
+import { IDeposit } from '../../client/models/IDeposit'
 
 export interface IClientState {
   client: IUser

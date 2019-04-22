@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store'
-import { IUser } from '../../models/IUser'
+import { IUser } from '../../client/models/IUser'
 
 export enum EClientsActions {
   GetClients = '[Clients] Get Clients',

@@ -3,7 +3,7 @@ import { Effect, ofType, Actions } from '@ngrx/effects'
 import { of } from 'rxjs'
 import { switchMap, map, catchError } from 'rxjs/operators'
 
-import { GenderService } from '../../services/gender.service'
+import { GenderService } from '../../shared/services/gender.service'
 import {
   EGenderActions,
   GetGenders,
