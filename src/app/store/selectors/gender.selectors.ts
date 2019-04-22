@@ -1,9 +1,9 @@
-import { createSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store'
 
-import { IAppState } from '../state/app.state';
-import { IGenderState } from '../state/gender.state';
+import { IAppState } from '../state/app.state'
+import { IGenderState } from '../state/gender.state'
 
-const selectGender = (state: IAppState) => state.gender;
+const selectGender = (state: IAppState) => state.gender
 
 export const selectGenders = createSelector(
   selectGender,
@@ -13,4 +13,11 @@ export const selectGenders = createSelector(
 export const selectGenderLoadStatus = createSelector(
   selectGender,
   (state: IGenderState) => state.loaded
+)
+
+export const selectGendeStatuses = createSelector(
+  selectGender,
+  (state: IGenderState) => {
+    return { failed: state.failed, loaded: state.loaded }
+  }
 )

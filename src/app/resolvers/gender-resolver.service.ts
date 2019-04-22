@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core'
-import { CanActivate, Router } from '@angular/router'
+import { Resolve } from '@angular/router'
 import { Observable } from 'rxjs'
 import { of } from 'rxjs'
 import { Store, select } from '@ngrx/store'
 import { IAppState } from '../store/state/app.state'
 import { selectGendeStatuses } from '../store/selectors/gender.selectors'
 import { GetGenders, ClearGenderState } from '../store/actions/gender.action'
-import { catchError, tap, filter, switchMap, take } from 'rxjs/operators'
+import { catchError, tap, filter, switchMap, take, map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
-export class GenderGuard implements CanActivate {
-  constructor(private store: Store<IAppState>, private router: Router) {}
+export class GenderResolver implements Resolve<boolean> {
+  constructor(private store: Store<IAppState>) {}
 
-  getFromStoreOrApi(): Observable<any> {
+  resolve(): Observable<boolean> {
     return this.store.pipe(
       select(selectGendeStatuses),
       tap((statuses: any) => {
@@ -25,26 +25,15 @@ export class GenderGuard implements CanActivate {
       filter(statuses => {
         if (statuses.loaded) return true
         else if (statuses.failed) {
-          this.router.navigateByUrl('error', { replaceUrl: true })
           this.store.dispatch(new ClearGenderState())
           return true
         }
+      }),
+      map(statuses => {
+        if (statuses.loaded) return true
         return false
       }),
       take(1)
-    )
-  }
-
-  canActivate(): Observable<boolean> {
-    return this.getFromStoreOrApi().pipe(
-      switchMap(() => {
-        console.log('ssss')
-        return of(true)
-      }),
-      catchError(() => {
-        console.log('aaaa')
-        return of(false)
-      })
     )
   }
 }

@@ -3,7 +3,8 @@ import { Action } from '@ngrx/store'
 export enum EGenderActions {
   GetGenders = '[Gender] Get Genders',
   GetGendersSuccess = '[Gender] Get Genders Success',
-  GetGendersFailed = '[Gender] Get Genders Failed'
+  GetGendersFailed = '[Gender] Get Genders Failed',
+  ClearGenderState = '[Gender] Clear Gender State'
 }
 
 export class GetGenders implements Action {
@@ -19,4 +20,8 @@ export class GetGendersFailed implements Action {
   public readonly type = EGenderActions.GetGendersFailed
 }
 
-export type GenderActions = GetGenders | GetGendersSuccess | GetGendersFailed
+export class ClearGenderState implements Action {
+  public readonly type = EGenderActions.ClearGenderState
+}
+
+export type GenderActions = GetGenders | GetGendersSuccess | GetGendersFailed | ClearGenderState

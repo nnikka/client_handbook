@@ -1,9 +1,11 @@
 export interface IGenderState {
   genders: string[],
-  loaded: boolean
+  loaded: boolean,
+  failed: boolean
 }
 
 export const initialGenderState = {
   genders: [],
-  loaded: false
+  loaded: false,
+  failed: false
 }

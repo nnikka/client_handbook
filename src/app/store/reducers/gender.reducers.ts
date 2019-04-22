@@ -22,6 +22,13 @@ export const genderReducer = (
     case EGenderActions.GetGendersFailed: {
       return {
         ...state,
+        ...initialGenderState,
+        failed: true
+      }
+    }
+    case EGenderActions.ClearGenderState: {
+      return {
+        ...state,
         ...initialGenderState
       }
     }

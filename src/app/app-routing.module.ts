@@ -6,9 +6,9 @@ import { ErrorComponent } from './components/error/error.component'
 import { AddUserComponent } from './containers/add-user/add-user.component'
 import { ClientsComponent } from './containers/clients/clients.component'
 
-import { CurrencyGuard } from './guards/currency.guard'
-import { DepositTypeGuard } from './guards/deposit-type.guard'
 import { GenderGuard } from './guards/gender.guard'
+
+import { GenderResolver } from './resolvers/gender-resolver.service'
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { animation: 'Home' } },
@@ -22,7 +22,8 @@ const routes: Routes = [
   {
     path: 'clients',
     component: ClientsComponent,
-    data: { animation: 'clients' }
+    data: { animation: 'clients' },
+    resolve: { 'genders': GenderResolver }
   }
 ]
 

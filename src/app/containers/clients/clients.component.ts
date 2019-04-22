@@ -75,15 +75,17 @@ export class ClientsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.store
-      .pipe(select(selectGenders))
-      .pipe(take(1))
-      .subscribe(genders => {
-        this.dropDownFilters = [
-          ...this.dropDownFilters,
-          { name: 'gender', label: 'Gender', options: genders }
-        ]
-      })
+    if (this.route.snapshot.data['genders']) {
+      this.store
+        .pipe(select(selectGenders))
+        .pipe(take(1))
+        .subscribe(genders => {
+          this.dropDownFilters = [
+            ...this.dropDownFilters,
+            { name: 'gender', label: 'Gender', options: genders }
+          ]
+        })
+    }
     this.watchRouteQueryParams()
   }
 
