@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core'
 import { IDropDownFilter } from '../../models/IDropDownFilter'
 import { selectGenders } from '../../store/selectors/gender.selectors'
 import { ITextFilter } from '../../models/ITextFilter'
+import { ISorterItem } from '../../models/ISorterItem'
 import { Store, select } from '@ngrx/store'
 import { IAppState } from '../../store/state/app.state'
 import { take } from 'rxjs/operators'
@@ -44,6 +45,18 @@ export class ClientsComponent implements OnInit, OnDestroy {
   routeQuerySubscription: Subscription
 
   textFilters: ITextFilter[] = [
+    { name: 'firstName', label: 'First name' },
+    { name: 'lastName', label: 'Last name' },
+    { name: 'personalNumber', label: 'Personal number' },
+    { name: 'legalCountry', label: 'Legal country' },
+    { name: 'legalCity', label: 'Legal city' },
+    { name: 'legalAddress', label: 'Legal address' },
+    { name: 'actualCountry', label: 'Actual country' },
+    { name: 'actualCity', label: 'Actual city' },
+    { name: 'actualAddress', label: 'Actual address' }
+  ]
+
+  sorterItems: ISorterItem[] = [
     { name: 'firstName', label: 'First name' },
     { name: 'lastName', label: 'Last name' },
     { name: 'personalNumber', label: 'Personal number' },

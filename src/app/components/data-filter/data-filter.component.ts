@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { IDropDownFilter } from '../../models/IDropDownFilter'
 import { ITextFilter } from '../../models/ITextFilter'
 import { FormGroup, FormBuilder } from '@angular/forms'
@@ -13,12 +13,11 @@ import { Subscription } from 'rxjs'
   templateUrl: './data-filter.component.html',
   styleUrls: ['./data-filter.component.css']
 })
-export class DataFilterComponent implements OnInit, OnDestroy {
+export class DataFilterComponent implements OnInit {
   @Input() textFilters: ITextFilter[] = []
   @Input() dropDownFilters: IDropDownFilter[] = []
 
   form: FormGroup
-  routeQuerySubscription: Subscription
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,7 +38,7 @@ export class DataFilterComponent implements OnInit, OnDestroy {
   }
 
   createForm() {
-    this.routeQuerySubscription = this.route.queryParams.pipe(take(1)).subscribe(params => {
+    this.route.queryParams.pipe(take(1)).subscribe(params => {
       let group: any = {}
       this.textFilters.forEach(item => {
         group[item.name] = [
@@ -65,9 +64,5 @@ export class DataFilterComponent implements OnInit, OnDestroy {
       queryParams: queryParams,
       queryParamsHandling: 'merge'
     })
-  }
-
-  ngOnDestroy() {
-    this.routeQuerySubscription.unsubscribe()
   }
 }

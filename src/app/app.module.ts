@@ -33,7 +33,8 @@ import { ComponentLoaderOverlayComponent } from './components/component-loader-o
 import { ClientsComponent as ClientsContainer } from './containers/clients/clients.component'
 import { DataFilterComponent } from './components/data-filter/data-filter.component'
 import { DataTableComponent } from './components/data-table/data-table.component'
-import { DataPaginatorComponent } from './components/data-paginator/data-paginator.component'
+import { DataPaginatorComponent } from './components/data-paginator/data-paginator.component';
+import { DataSorterComponent } from './components/data-sorter/data-sorter.component'
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DataPaginatorComponent } from './components/data-paginator/data-paginat
     ClientsContainer,
     DataFilterComponent,
     DataTableComponent,
-    DataPaginatorComponent
+    DataPaginatorComponent,
+    DataSorterComponent
   ],
   imports: [
     BrowserModule,

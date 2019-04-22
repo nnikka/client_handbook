@@ -1,0 +1,6 @@
+<div class="ch-data-sort-container">
+  <span>Sort by: </span>
+  &nbsp;
+  <p-dropdown [options]="sortSelectOptions" [(ngModel)]="sortBy" placeholder="Choose order" (onChange)="handleChange($event)">
+  </p-dropdown>
+</div>
