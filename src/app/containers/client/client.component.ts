@@ -15,7 +15,8 @@ import {
   ClearClientState,
   GetClientSuccess,
   GetClientDeposits,
-  ClientAddDeposit
+  ClientAddDeposit,
+  EditClientDeposit
 } from '../../store/actions/client.action'
 import { selectDepositTypes } from '../../store/selectors/depositType.selectors'
 import { selectCurrencies } from '../../store/selectors/currency.selectors'
@@ -49,6 +50,7 @@ export class ClientComponent implements OnInit, OnDestroy {
   clientIsUpdating: boolean = false
   showAddDepositForm: boolean = false
   depositIsAdding: boolean = false
+  depositIsClosing: number[] = []
 
   get canAddDeposit(): boolean {
     return (
@@ -118,6 +120,35 @@ export class ClientComponent implements OnInit, OnDestroy {
             severity: 'error',
             summary: 'Ooops!!!',
             detail: 'Deposit has not been added'
+          })
+        }
+      )
+  }
+
+  handleCloseDeposit($event) {
+    this.depositIsClosing = [...this.depositIsClosing, $event]
+    this.depositService
+      .edit($event.id, { ...$event, status: 'closed' })
+      .subscribe(
+        data => {
+          this.store.dispatch(new EditClientDeposit(data))
+          this.depositIsClosing = this.depositIsClosing.filter(
+            id => id !== $event
+          )
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Congratulations',
+            detail: 'Deposit has been closed'
+          })
+        },
+        error => {
+          this.depositIsClosing = this.depositIsClosing.filter(
+            id => id !== $event
+          )
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Ooops!!!',
+            detail: 'Deposit has not been closed'
           })
         }
       )

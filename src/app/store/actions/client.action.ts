@@ -10,7 +10,8 @@ export enum EClientActions {
   GetClientDeposits = '[Client] Get Client Deposits',
   GetClientDepositsSuccess = '[Client] Get Client Deposits Success',
   GetClientDepositsFailed = '[Client] Get Client Deposits Failed',
-  ClientAddDeposit = '[Client] Get Client Add Deposit'
+  ClientAddDeposit = '[Client] Get Client Add Deposit',
+  EditClientDeposit = '[Client] Edit Client Deposit'
 }
 
 export class GetClient implements Action {
@@ -45,6 +46,11 @@ export class GetClientDepositsFailed implements Action {
   public readonly type = EClientActions.GetClientDepositsFailed
 }
 
+export class EditClientDeposit implements Action {
+  public readonly type = EClientActions.EditClientDeposit
+  public constructor(public payload: IDeposit) {}
+}
+
 export class ClientAddDeposit implements Action {
   public readonly type = EClientActions.ClientAddDeposit
   constructor(public payload: IDeposit) {}
@@ -59,3 +65,4 @@ export type ClientActions =
   | GetClientDepositsSuccess
   | GetClientDepositsFailed
   | ClientAddDeposit
+  | EditClientDeposit

@@ -24,4 +24,8 @@ export class DepositService {
   getByUserId(id: number): Observable<IDeposit[]> {
     return this._http.get<IDeposit[]>(this.depositsUrl + '?clientId=' + id)
   }
+
+  edit(id: number, params: any): Observable<IDeposit> {
+    return this._http.put<IDeposit>(this.depositsUrl + '/' + id, { ...params })
+  }
 }

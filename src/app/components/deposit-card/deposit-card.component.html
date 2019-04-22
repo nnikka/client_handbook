@@ -1,7 +1,8 @@
-<p-card [header]="deposit.status + ' deposit'" [style]="{width: '100%'}">
+<p-card [header]="deposit.status + ' deposit'" [style]="{width: '100%', position: 'relative'}">
+  <app-component-loader-overlay [loading]="isLoading"></app-component-loader-overlay>
   <div class="ch-card-item">
     <span class="ch-card-item-text">Status: &nbsp;</span>
-    <p-message [severity]="deposit.status ? 'success' : 'error'" [text]="deposit.status"></p-message>
+    <p-message [severity]="deposit.status === 'active' ? 'success' : 'error'" [text]="deposit.status"></p-message>
   </div>
   <div class="ch-card-item">
     <span class="ch-card-item-text">Type: &nbsp;</span>
@@ -10,6 +11,10 @@
   <div class="ch-card-item">
     <span class="ch-card-item-text">Currency: &nbsp;</span>
     <p-message severity="info" [text]="deposit.currency"></p-message>
+  </div>
+  <div class="ch-card-item" *ngIf="deposit.status === 'active'">
+    <button pButton type="button" label="Close deposit" class="ui-button-rounded ui-button-danger"
+      (click)="onCloseDeposit()"></button>
   </div>
   <p-footer>
     <span>&#35;{{deposit.id}}</span>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IDeposit } from '../../models/IDeposit'
 
 @Component({
@@ -8,11 +8,19 @@ import { IDeposit } from '../../models/IDeposit'
 })
 export class DepositCardComponent implements OnInit {
   @Input() deposit: IDeposit
+  @Input() closingArr: number[] = []
+  @Output() onClose: EventEmitter<any> = new EventEmitter<any>()
+
+  get isLoading(): boolean {
+    return this.closingArr.includes(this.deposit.id)
+  }
 
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.deposit)
+  ngOnInit() {}
+
+  onCloseDeposit() {
+    this.onClose.emit(this.deposit)
   }
 
 }

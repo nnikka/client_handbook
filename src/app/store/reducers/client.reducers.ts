@@ -38,6 +38,16 @@ export const clientReducer = (
         deposits: [...state.deposits, action.payload]
       }
     }
+    case EClientActions.EditClientDeposit: {
+      return {
+        ...state,
+        deposits: state.deposits.map((deposit, i) =>
+          deposit.id == action.payload.id
+            ? { ...action.payload }
+            : { ...deposit }
+        )
+      }
+    }
     case EClientActions.ClearClientState: {
       return {
         ...initialClientState

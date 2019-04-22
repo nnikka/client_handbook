@@ -20,39 +20,39 @@
   ],
   "deposits": [
     {
-      "id": 1555803342286,
-      "clientId": 1555803809286,
       "currency": "GEL",
-      "depositType": "current",
-      "status": "active"
-    },
-    {
-      "currency": "USD",
       "depositType": "savings",
       "clientId": 1555803809286,
-      "id": 1555930688703,
-      "status": "active"
+      "id": 1555930748127,
+      "status": "closed"
+    },
+    {
+      "currency": "GEL",
+      "depositType": "savings",
+      "clientId": 1555803809286,
+      "id": 1555930718197,
+      "status": "closed"
     },
     {
       "currency": "GEL",
       "depositType": "savings",
       "clientId": 1555803809286,
       "id": 1555930748197,
-      "status": "active"
+      "status": "closed"
     },
     {
       "currency": "RUB",
       "depositType": "current",
       "clientId": 1555803809286,
       "id": 1555931129987,
-      "status": "active"
+      "status": "closed"
     },
     {
       "currency": "GEL",
       "depositType": "current",
       "clientId": 1555803809286,
       "id": 1555931252889,
-      "status": "active"
+      "status": "closed"
     },
     {
       "currency": "GEL",

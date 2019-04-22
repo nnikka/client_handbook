@@ -33,9 +33,10 @@
       </ng-template>
       <div class="ui-g-12" *ngIf="!(clientDepositsFailed$ | async); else chNoDeposits">
         <div class="ui-g">
-          <div *ngIf="(clientDepositsLoaded$ | async) && (clientDeposits$ | async).length === 0"><strong>Client doesn't have deposits</strong></div>
+          <div *ngIf="(clientDepositsLoaded$ | async) && (clientDeposits$ | async).length === 0"><strong>Client doesn't
+              have deposits</strong></div>
           <div class="ui-md-12 ui-lg-4" *ngFor="let deposit of clientDeposits$ | async">
-            <app-deposit-card [deposit]="deposit"></app-deposit-card>
+            <app-deposit-card [deposit]="deposit" [closingArr]="depositIsClosing" (onClose)="handleCloseDeposit($event)"></app-deposit-card>
           </div>
         </div>
       </div>
