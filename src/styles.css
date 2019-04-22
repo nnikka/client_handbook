@@ -13,3 +13,7 @@ body {
 .ch-pos-relative {
   position: relative;
 }
+.ui-paginator {
+  background-color: white !important;
+  border: none !important;
+}

@@ -31,8 +31,9 @@ import { ClientFormComponent } from './components/client-form/client-form.compon
 import { FileInputComponent } from './components/file-input/file-input.component'
 import { ComponentLoaderOverlayComponent } from './components/component-loader-overlay/component-loader-overlay.component'
 import { ClientsComponent as ClientsContainer } from './containers/clients/clients.component'
-import { DataFilterComponent } from './components/data-filter/data-filter.component';
+import { DataFilterComponent } from './components/data-filter/data-filter.component'
 import { DataTableComponent } from './components/data-table/data-table.component'
+import { DataPaginatorComponent } from './components/data-paginator/data-paginator.component'
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { DataTableComponent } from './components/data-table/data-table.component
     ComponentLoaderOverlayComponent,
     ClientsContainer,
     DataFilterComponent,
-    DataTableComponent
+    DataTableComponent,
+    DataPaginatorComponent
   ],
   imports: [
     BrowserModule,

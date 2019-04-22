@@ -3,11 +3,13 @@ import { IUser } from '../../models/IUser'
 export interface IClientsState {
   clients: IUser[],
   loaded: boolean,
-  failed: boolean
+  failed: boolean,
+  lastPage: number
 }
 
 export const initialClientsState = {
   clients: [],
   loaded: false,
-  failed: false
+  failed: false,
+  lastPage: 1
 }

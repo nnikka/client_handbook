@@ -8,4 +8,7 @@
     <app-data-table [config]="dataTableCfg" [cols]="clients$ | async" [loaded]="clientsLoadStatus$ | async">
     </app-data-table>
   </div>
+  <div class="ui-g-12">
+    <app-data-paginator [totalPages]="clientsLastPage$ | async"></app-data-paginator>
+  </div>
 </div>

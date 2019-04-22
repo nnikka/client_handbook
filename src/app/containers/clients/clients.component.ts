@@ -14,7 +14,8 @@ import { HttpHelperService } from '../../services/http-helper.service'
 import { IDataTableCfgItem } from '../../models/IDataTableCfgItem'
 import {
   selectClients,
-  selectClientsLoadStatus
+  selectClientsLoadStatus,
+  selectClientsLastPage
 } from '../../store/selectors/clients.selectors'
 import { Subscription } from 'rxjs'
 
@@ -39,6 +40,7 @@ export class ClientsComponent implements OnInit, OnDestroy {
   dropDownFilters: IDropDownFilter[] = []
   clients$ = this.store.pipe(select(selectClients))
   clientsLoadStatus$ = this.store.pipe(select(selectClientsLoadStatus))
+  clientsLastPage$ = this.store.pipe(select(selectClientsLastPage))
   routeQuerySubscription: Subscription
 
   textFilters: ITextFilter[] = [

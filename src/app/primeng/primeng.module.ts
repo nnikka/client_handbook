@@ -12,6 +12,7 @@ import { ToastModule } from 'primeng/toast'
 import { MessageService } from 'primeng/api'
 import { AccordionModule } from 'primeng/accordion'
 import { TableModule } from 'primeng/table'
+import { PaginatorModule } from 'primeng/paginator'
 
 @NgModule({
   declarations: [],
@@ -27,7 +28,8 @@ import { TableModule } from 'primeng/table'
     DropdownModule,
     ToastModule,
     AccordionModule,
-    TableModule
+    TableModule,
+    PaginatorModule
   ],
   exports: [
     ButtonModule,
@@ -40,7 +42,8 @@ import { TableModule } from 'primeng/table'
     DropdownModule,
     ToastModule,
     AccordionModule,
-    TableModule
+    TableModule,
+    PaginatorModule
   ],
   providers: [MessageService]
 })

@@ -15,11 +15,11 @@ import {
 @Injectable()
 export class ClientsEffects {
   @Effect()
-  getCurrencies$ = this._actions.pipe(
+  getClients$ = this._actions.pipe(
     ofType<GetClients>(EClientActions.GetClients),
     switchMap(action => {
       return this._clientService.getClients(action.payload).pipe(
-        map((clients: IUser[]) => new GetClientsSuccess(clients)),
+        map(payload => new GetClientsSuccess(payload)),
         catchError(error => of(new GetClientsFailed()))
       )
     })

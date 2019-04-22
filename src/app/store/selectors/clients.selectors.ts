@@ -19,3 +19,8 @@ export const selectClientsLoadStatus = createSelector(
   selectClientsState,
   (state: IClientsState) => state.loaded
 )
+
+export const selectClientsLastPage = createSelector(
+  selectClientsState,
+  (state: IClientsState) => state.lastPage
+)

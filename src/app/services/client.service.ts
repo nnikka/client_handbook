@@ -3,6 +3,8 @@ import { environment } from '../../environments/environment'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { IUser } from '../models/IUser'
+import { map } from 'rxjs/operators'
+import HeaderParser from 'parse-link-header'
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,16 @@ export class ClientService {
     return this._http.post(this.clientUrl, user)
   }
 
-  getClients(query: string): Observable<IUser[]> {
-    return this._http.get<IUser[]>(this.clientUrl + query)
+  getClients(query: string): Observable<any> {
+    return this._http
+      .get<any>(this.clientUrl + query, { observe: 'response' })
+      .pipe(
+        map(resp => {
+          let users = resp.body
+          let parsed = HeaderParser(resp.headers.get('link'))
+          let lastPage = parsed ? parseInt(parsed.last._page) : 1
+          return { users: users, lastPage: lastPage }
+        })
+      )
   }
 }

@@ -9,7 +9,8 @@ export const clientsReducer = (
     case EClientActions.GetClientsSuccess: {
       return {
         ...state,
-        clients: action.payload,
+        clients: action.payload.users,
+        lastPage: action.payload.lastPage,
         loaded: true
       }
     }

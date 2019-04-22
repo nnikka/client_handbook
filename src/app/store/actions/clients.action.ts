@@ -15,7 +15,7 @@ export class GetClients implements Action {
 
 export class GetClientsSuccess implements Action {
   public readonly type = EClientActions.GetClientsSuccess
-  constructor(public payload: IUser[]) {}
+  constructor(public payload: { users: IUser[]; lastPage: number }) {}
 }
 
 export class GetClientsFailed implements Action {
@@ -26,4 +26,8 @@ export class ClearClientsState implements Action {
   public readonly type = EClientActions.ClearClientsState
 }
 
-export type ClientsActions = GetClients | GetClientsSuccess | GetClientsFailed | ClearClientsState
+export type ClientsActions =
+  | GetClients
+  | GetClientsSuccess
+  | GetClientsFailed
+  | ClearClientsState
