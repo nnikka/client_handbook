@@ -22,6 +22,6 @@ export class DepositService {
   }
 
   getByUserId(id: number): Observable<IDeposit[]> {
-    return this._http.get<IDeposit[]>(this.depositsUrl + '?userId=' + id)
+    return this._http.get<IDeposit[]>(this.depositsUrl + '?clientId=' + id)
   }
 }

@@ -37,7 +37,8 @@ import { DataTableComponent } from './components/data-table/data-table.component
 import { DataPaginatorComponent } from './components/data-paginator/data-paginator.component'
 import { DataSorterComponent } from './components/data-sorter/data-sorter.component'
 import { ClientComponent as ClientContainer } from './containers/client/client.component';
-import { DepositFormComponent } from './components/deposit-form/deposit-form.component'
+import { DepositFormComponent } from './components/deposit-form/deposit-form.component';
+import { DepositCardComponent } from './components/deposit-card/deposit-card.component'
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { DepositFormComponent } from './components/deposit-form/deposit-form.com
     DataPaginatorComponent,
     DataSorterComponent,
     ClientContainer,
-    DepositFormComponent
+    DepositFormComponent,
+    DepositCardComponent
   ],
   imports: [
     BrowserModule,

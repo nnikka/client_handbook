@@ -1,0 +1,17 @@
+<p-card [header]="deposit.status + ' deposit'" [style]="{width: '100%'}">
+  <div class="ch-card-item">
+    <span class="ch-card-item-text">Status: &nbsp;</span>
+    <p-message [severity]="deposit.status ? 'success' : 'error'" [text]="deposit.status"></p-message>
+  </div>
+  <div class="ch-card-item">
+    <span class="ch-card-item-text">Type: &nbsp;</span>
+    <p-message severity="info" [text]="deposit.depositType"></p-message>
+  </div>
+  <div class="ch-card-item">
+    <span class="ch-card-item-text">Currency: &nbsp;</span>
+    <p-message severity="info" [text]="deposit.currency"></p-message>
+  </div>
+  <p-footer>
+    <span>&#35;{{deposit.id}}</span>
+  </p-footer>
+</p-card>

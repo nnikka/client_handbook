@@ -74,6 +74,13 @@
       "clientId": 1555803809286,
       "id": 1555931886858,
       "status": "active"
+    },
+    {
+      "currency": "GEL",
+      "depositType": "savings",
+      "clientId": 1555804520157,
+      "id": 1555937715006,
+      "status": "active"
     }
   ],
   "clients": [

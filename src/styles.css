@@ -43,3 +43,14 @@ body {
 .ch-filter-input-container input {
   width: 100%;
 }
+.ch-card-item-text {
+  vertical-align: -webkit-baseline-middle;
+}
+.ch-card-item {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.ch-deposits-container {
+  position: relative;
+  min-height: 200px;
+}
