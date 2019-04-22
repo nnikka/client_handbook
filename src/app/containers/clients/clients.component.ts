@@ -9,7 +9,8 @@ import { take } from 'rxjs/operators'
 import { ActivatedRoute } from '@angular/router'
 import {
   GetClients,
-  ClearClientsState
+  ClearClientsState,
+  PrepareForNextCall
 } from '../../store/actions/clients.action'
 import { HttpHelperService } from '../../services/http-helper.service'
 import { IDataTableCfgItem } from '../../models/IDataTableCfgItem'
@@ -29,6 +30,7 @@ export class ClientsComponent implements OnInit, OnDestroy {
   dataTableCfg: IDataTableCfgItem[] = [
     { key: 'firstName', header: 'First name' },
     { key: 'lastName', header: 'Last name' },
+    { key: 'gender', header: 'Gender' },
     { key: 'personalNumber', header: 'Personal number' },
     { key: 'legalCountry', header: 'Legal country' },
     { key: 'legalCity', header: 'Legal city' },
@@ -91,6 +93,7 @@ export class ClientsComponent implements OnInit, OnDestroy {
 
   watchRouteQueryParams() {
     this.routeQuerySubscription = this.route.queryParams.subscribe(query => {
+      this.store.dispatch(new PrepareForNextCall())
       this.store.dispatch(
         new GetClients(this.httpHelperService.objectToQueryString(query))
       )

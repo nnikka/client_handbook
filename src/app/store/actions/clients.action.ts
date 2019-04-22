@@ -5,6 +5,7 @@ export enum EClientActions {
   GetClients = '[Clients] Get Clients',
   GetClientsSuccess = '[Clients] Get Clients Success',
   GetClientsFailed = '[Clients] Get Clients Failed',
+  PrepareForNextCall = '[Clients] Prepare For Next Call',
   ClearClientsState = '[Clients] Clear Clients State'
 }
 
@@ -26,8 +27,13 @@ export class ClearClientsState implements Action {
   public readonly type = EClientActions.ClearClientsState
 }
 
+export class PrepareForNextCall implements Action {
+  public readonly type = EClientActions.PrepareForNextCall
+}
+
 export type ClientsActions =
   | GetClients
   | GetClientsSuccess
   | GetClientsFailed
   | ClearClientsState
+  | PrepareForNextCall

@@ -1,9 +1,7 @@
-<div class="ui-g">
+<div class="ui-g" class="ch-data-table-container">
+  <app-component-loader-overlay [loading]="!loaded"></app-component-loader-overlay>
   <div class="ui-g-12">
-    <div class="ch-data-table-loading" *ngIf="!loaded; else chDataTable">
-      <strong>Loading...</strong>
-    </div>
-    <ng-template #chDataTable>
+    <div *ngIf="loaded">
       <p-table [columns]="config" [value]="cols">
         <ng-template pTemplate="header">
           <tr>
@@ -16,6 +14,6 @@
           </tr>
         </ng-template>
       </p-table>
-    </ng-template>
+    </div>
   </div>
 </div>

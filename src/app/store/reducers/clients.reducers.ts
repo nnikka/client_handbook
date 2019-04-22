@@ -21,6 +21,14 @@ export const clientsReducer = (
         failed: true
       }
     }
+    case EClientActions.PrepareForNextCall: {
+      return {
+        ...state,
+        clients: initialClientsState.clients,
+        failed: initialClientsState.failed,
+        loaded: initialClientsState.loaded
+      }
+    }
     case EClientActions.ClearClientsState: {
       return {
         ...initialClientsState

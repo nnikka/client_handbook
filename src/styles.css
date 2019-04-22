@@ -17,3 +17,9 @@ body {
   background-color: white !important;
   border: none !important;
 }
+.ch-data-table-container {
+  position: relative;
+  min-height: 200px;
+  max-height: 600px;
+  overflow: auto;
+}
