@@ -26,3 +26,20 @@ body {
 .ch-table-body-tr {
   cursor: pointer;
 }
+.ch-dropdown-container {
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+.ui-dropdown {
+  width: 100%;
+}
+.cd-300-cnt {
+  max-width: 300px;
+  display: inline-block;
+}
+.ch-float-right {
+  float: right;
+}
+.ch-filter-input-container input {
+  width: 100%;
+}

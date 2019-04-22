@@ -1,0 +1,24 @@
+<div>
+  <form [formGroup]="form" (ngSubmit)="handleSave()">
+    <div>
+      <div class="ch-dropdown-container">
+        <p-dropdown [options]="selectCurrencies" formControlName="currency" placeholder="Select currency">
+        </p-dropdown>
+      </div>
+      <p-message severity="error" text="Currency is required"
+        *ngIf="!form.controls['currency'].valid && form.controls['currency'].touched"></p-message>
+    </div>
+    <div>
+      <div class="ch-dropdown-container">
+        <p-dropdown [options]="selectDepositTypes" formControlName="depositType" placeholder="Select depositType">
+        </p-dropdown>
+      </div>
+      <p-message severity="error" text="Deposit type is required"
+        *ngIf="!form.controls['depositType'].valid && form.controls['depositType'].touched"></p-message>
+    </div>
+    <div><br></div>
+    <div>
+      <button pButton type="submit" label="Save" [disabled]="!form.valid" class="ch-float-right"></button>
+    </div>
+  </form>
+</div>

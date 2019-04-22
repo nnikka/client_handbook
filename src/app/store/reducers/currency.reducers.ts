@@ -9,14 +9,15 @@ export const currencyReducer = (
     case ECurrencyActions.GetCurrenciesSuccess: {
       return {
         ...state,
-        currecies: action.payload,
+        currencies: action.payload,
         loaded: true
       }
     }
     case ECurrencyActions.GetCurrenciesFailed: {
       return {
         ...state,
-        ...initialCurrencyState
+        ...initialCurrencyState,
+        failed: true
       }
     }
     case ECurrencyActions.ClearCurrencyState: {

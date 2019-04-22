@@ -12,6 +12,8 @@ import {
   ClearClientState,
   GetClientSuccess
 } from '../../store/actions/client.action'
+import { selectDepositTypes } from '../../store/selectors/depositType.selectors'
+import { selectCurrencies } from '../../store/selectors/currency.selectors'
 import { ActivatedRoute } from '@angular/router'
 import { ClientService } from '../../services/client.service'
 import { IUser } from '../../models/IUser'
@@ -27,8 +29,19 @@ export class ClientComponent implements OnInit, OnDestroy {
   client$ = this.store.pipe(select(selectClient))
   clientLoaded$ = this.store.pipe(select(selectClientLoadStatus))
   clientFailed$ = this.store.pipe(select(selectClientFailStatus))
+  depositTypes$ = this.store.pipe(select(selectDepositTypes))
+  currencies$ = this.store.pipe(select(selectCurrencies))
+
   clientId: number
   clientIsUpdating: boolean = false
+  showAddDepositForm: boolean = false
+
+  get canAddDeposit(): boolean {
+    return (
+      this.route.snapshot.data.currencies &&
+      this.route.snapshot.data.depositTypes
+    )
+  }
 
   constructor(
     private store: Store<IAppState>,
@@ -67,5 +80,9 @@ export class ClientComponent implements OnInit, OnDestroy {
         })
       }
     )
+  }
+
+  handleAddDeposit($event) {
+    console.log($event)
   }
 }

@@ -1,11 +1,11 @@
 export interface ICurrencyState {
-  currecies: string[],
+  currencies: string[],
   loaded: boolean,
   failed: boolean
 }
 
 export const initialCurrencyState = {
-  currecies: [],
+  currencies: [],
   loaded: false,
   failed: false
 }

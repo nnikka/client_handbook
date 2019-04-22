@@ -3,12 +3,31 @@
   <div class="ui-g-12 ui-md-6 ui-lg-4">
     <p-card header="Edit client">
       <div class="ch-pos-relative" *ngIf="!(clientFailed$ | async); else chClientFailed">
-        <app-component-loader-overlay [loading]="!(clientLoaded$ | async) || clientIsUpdating"></app-component-loader-overlay>
-        <app-client-form [client]="client$ | async" [clearOnSubmit]="false" [genders]="genders$ | async" (onSave)="handleSave($event)"></app-client-form>
+        <app-component-loader-overlay [loading]="!(clientLoaded$ | async) || clientIsUpdating">
+        </app-component-loader-overlay>
+        <app-client-form [client]="client$ | async" [clearOnSubmit]="false" [genders]="genders$ | async"
+          (onSave)="handleSave($event)"></app-client-form>
       </div>
       <ng-template #chClientFailed>
         Failed to load client
       </ng-template>
     </p-card>
   </div>
-</div>
+  <div class="ui-g-12 ui-md-6 ui-lg-8">
+    <div class="ui-g">
+      <div class="ui-g-12" *ngIf="canAddDeposit; else chDepositsHeader">
+        <span>Deposits - </span>
+        <button pButton type="button" label="Add new deposit"
+          (click)="showAddDepositForm = !showAddDepositForm"></button>
+        <p-dialog header="Add new deposit" [(visible)]="showAddDepositForm" [modal]="true" [responsive]="true"
+          [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [baseZIndex]="10000">
+          <app-deposit-form [depositTypes]="depositTypes$ | async" [currencies]="currencies$ | async" (onSave)="handleAddDeposit($event)"></app-deposit-form>
+        </p-dialog>
+      </div>
+      <ng-template #chDepositsHeader>
+        <div class="ui-g-12" #chDepositsHeader>
+          <span>Deposits</span>
+        </div>
+      </ng-template>
+    </div>
+  </div>

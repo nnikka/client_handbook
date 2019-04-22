@@ -22,7 +22,8 @@ export const depositTypeReducer = (
     case EDepositTypeActions.GetDepositTypesFailed: {
       return {
         ...state,
-        ...initialDepositTypeState
+        ...initialDepositTypeState,
+        failed: true
       }
     }
     case EDepositTypeActions.ClearDepositTypeState: {

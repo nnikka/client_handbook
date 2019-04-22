@@ -7,7 +7,7 @@ const selectCurrency = (state: IAppState) => state.currency;
 
 export const selectCurrencies = createSelector(
   selectCurrency,
-  (state: ICurrencyState) => state.currecies
+  (state: ICurrencyState) => state.currencies
 )
 
 export const selectCurrencyLoadStatus = createSelector(
