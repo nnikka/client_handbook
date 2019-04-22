@@ -15,6 +15,11 @@
   </div>
   <div class="ui-g-12 ui-md-6 ui-lg-8">
     <div class="ui-g">
+      <div class="ui-g-12 ch-pos-relative">
+        <app-component-loader-overlay [loading]="clientIsDeleting"></app-component-loader-overlay>
+        <span>Delete client - </span>
+        <button pButton type="button" label="Delete" class="ui-button-danger" (click)="deleteClient()"></button>
+      </div>
       <div class="ui-g-12" *ngIf="canAddDeposit; else chDepositsHeader">
         <span>Deposits - </span>
         <button pButton type="button" label="Add new deposit"
@@ -36,7 +41,8 @@
           <div *ngIf="(clientDepositsLoaded$ | async) && (clientDeposits$ | async).length === 0"><strong>Client doesn't
               have deposits</strong></div>
           <div class="ui-g-12 ui-md-12 ui-lg-4" *ngFor="let deposit of clientDeposits$ | async">
-            <app-deposit-card [deposit]="deposit" [closingArr]="depositIsClosing" (onClose)="handleCloseDeposit($event)"></app-deposit-card>
+            <app-deposit-card [deposit]="deposit" [closingArr]="depositIsClosing"
+              (onClose)="handleCloseDeposit($event)"></app-deposit-card>
           </div>
         </div>
       </div>

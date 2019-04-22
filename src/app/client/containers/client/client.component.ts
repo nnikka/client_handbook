@@ -20,7 +20,7 @@ import {
 } from '../../../store/actions/client.action'
 import { selectDepositTypes } from '../../../store/selectors/depositType.selectors'
 import { selectCurrencies } from '../../../store/selectors/currency.selectors'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { ClientService } from '../../services/client.service'
 import { DepositService } from '../../services/deposit.service'
 import { IUser } from '../../models/IUser'
@@ -50,6 +50,7 @@ export class ClientComponent implements OnInit, OnDestroy {
   clientIsUpdating: boolean = false
   showAddDepositForm: boolean = false
   depositIsAdding: boolean = false
+  clientIsDeleting: boolean = false
   depositIsClosing: number[] = []
 
   get canAddDeposit(): boolean {
@@ -64,7 +65,8 @@ export class ClientComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private clientService: ClientService,
     private messageService: MessageService,
-    private depositService: DepositService
+    private depositService: DepositService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -152,5 +154,28 @@ export class ClientComponent implements OnInit, OnDestroy {
           })
         }
       )
+  }
+
+  deleteClient() {
+    this.clientIsDeleting = true
+    this.clientService.delete(this.clientId).subscribe(
+      data => {
+        this.clientIsDeleting = false
+        this.router.navigate(['clients'])
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Congratulations',
+          detail: 'Client has been deleted'
+        })
+      },
+      error => {
+        this.clientIsDeleting = false
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Ooops!!!',
+          detail: 'Client has not been deleted'
+        })
+      }
+    )
   }
 }

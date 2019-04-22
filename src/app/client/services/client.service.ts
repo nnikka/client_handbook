@@ -35,6 +35,10 @@ export class ClientService {
       )
   }
 
+  delete(id: number): Observable<any> {
+    return this._http.delete(this.clientUrl + '/' + id)
+  }
+
   getClientById(id: number): Observable<IUser[]> {
     return this._http.get<IUser[]>(this.clientUrl + '?id=' + id)
   }
