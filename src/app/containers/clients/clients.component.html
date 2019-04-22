@@ -7,7 +7,7 @@
     <app-data-sorter [sorterItems]="sorterItems"></app-data-sorter>
   </div>
   <div class="ui-g-12">
-    <app-data-table [config]="dataTableCfg" [cols]="clients$ | async" [loaded]="clientsLoadStatus$ | async">
+    <app-data-table [config]="dataTableCfg" [cols]="clients$ | async" [loaded]="clientsLoadStatus$ | async" (onRowClick)="handeRowClick($event)">
     </app-data-table>
   </div>
   <div class="ui-g-12">

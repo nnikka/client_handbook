@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component'
 import { ErrorComponent } from './components/error/error.component'
 import { AddUserComponent } from './containers/add-user/add-user.component'
 import { ClientsComponent } from './containers/clients/clients.component'
+import { ClientComponent } from './containers/client/client.component'
 
 import { GenderGuard } from './guards/gender.guard'
 
@@ -24,6 +25,11 @@ const routes: Routes = [
     component: ClientsComponent,
     data: { animation: 'clients' },
     resolve: { 'genders': GenderResolver }
+  },
+  {
+    path: 'client/:id',
+    component: ClientComponent,
+    data: { animation: 'client' }
   }
 ]
 

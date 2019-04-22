@@ -34,7 +34,8 @@ import { ClientsComponent as ClientsContainer } from './containers/clients/clien
 import { DataFilterComponent } from './components/data-filter/data-filter.component'
 import { DataTableComponent } from './components/data-table/data-table.component'
 import { DataPaginatorComponent } from './components/data-paginator/data-paginator.component';
-import { DataSorterComponent } from './components/data-sorter/data-sorter.component'
+import { DataSorterComponent } from './components/data-sorter/data-sorter.component';
+import { ClientComponent as ClientContainer } from './containers/client/client.component'
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { DataSorterComponent } from './components/data-sorter/data-sorter.compon
     DataFilterComponent,
     DataTableComponent,
     DataPaginatorComponent,
-    DataSorterComponent
+    DataSorterComponent,
+    ClientContainer
   ],
   imports: [
     BrowserModule,

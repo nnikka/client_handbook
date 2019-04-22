@@ -6,7 +6,7 @@ import { ISorterItem } from '../../models/ISorterItem'
 import { Store, select } from '@ngrx/store'
 import { IAppState } from '../../store/state/app.state'
 import { take } from 'rxjs/operators'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import {
   GetClients,
   ClearClientsState,
@@ -73,6 +73,7 @@ export class ClientsComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<IAppState>,
     private route: ActivatedRoute,
+    private router: Router,
     private httpHelperService: HttpHelperService
   ) {}
 
@@ -103,5 +104,9 @@ export class ClientsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.store.dispatch(new ClearClientsState())
     this.routeQuerySubscription.unsubscribe()
+  }
+
+  handeRowClick($event) {
+    this.router.navigate(['client/' + $event.id])
   }
 }

@@ -2,14 +2,14 @@
   <app-component-loader-overlay [loading]="!loaded"></app-component-loader-overlay>
   <div class="ui-g-12">
     <div *ngIf="loaded">
-      <p-table [columns]="config" [value]="cols">
+      <p-table [columns]="config" [value]="cols" [rowHover]="true">
         <ng-template pTemplate="header">
           <tr>
             <th *ngFor="let item of config">{{item.header}}</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-rowData let-car>
-          <tr>
+          <tr class="ch-table-body-tr" (click)="handleClick(rowData)">
             <td *ngFor="let item of config">{{rowData[item.key]}}</td>
           </tr>
         </ng-template>
