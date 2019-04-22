@@ -2,17 +2,17 @@
   <!-- <p-paginator [totalRecords]="totalRecords" [pageLinkSize]="pageLinkSize" [rows]="limit" [rowsPerPageOptions]="rowsPerPageOptions"
     (onPageChange)="paginate($event)" [(first)]="first"></p-paginator> -->
   <div *ngIf="pager.pages && pager.pages.length" class="pagination">
-    <button pButton [disabled]="pager.currentPage === 1" (click)="setPage(1)" label="first">
+    <button class="ch-md-none" pButton [disabled]="pager.currentPage === 1" (click)="setPage(1)" label="first">
     </button>
-    <button pButton [disabled]="pager.currentPage === 1" (click)="setPage(pager.currentPage - 1)" label="Previous">
+    <button class="ch-md-none" pButton [disabled]="pager.currentPage === 1" (click)="setPage(pager.currentPage - 1)" label="Previous">
     </button>
     <button pButton *ngFor="let page of pager.pages" [ngClass]="{'ui-button-secondary':pager.currentPage !== page}"
       (click)="setPage(page)" [label]="page">
     </button>
-    <button pButton [disabled]="pager.currentPage === pager.totalPages" (click)="setPage(pager.currentPage + 1)"
+    <button class="ch-md-none" pButton [disabled]="pager.currentPage === pager.totalPages" (click)="setPage(pager.currentPage + 1)"
       label="Next">
     </button>
-    <button pButton [disabled]="pager.currentPage === pager.totalPages" (click)="setPage(pager.totalPages)"
+    <button class="ch-md-none" pButton [disabled]="pager.currentPage === pager.totalPages" (click)="setPage(pager.totalPages)"
       label="Last">
     </button>
   </div>

@@ -1,56 +1,99 @@
 body {
   font-family: sans-serif;
 }
+
 .ui-menubar .ui-menubar-custom {
   float: left !important;
 }
+
 .ui-menubar p-menubarsub {
   float: right;
 }
+
 .ch-vert-center {
   text-align: center;
 }
+
 .ch-pos-relative {
   position: relative;
 }
+
 .ui-paginator {
   background-color: white !important;
   border: none !important;
 }
+
 .ch-data-table-container {
   position: relative;
   min-height: 200px;
   max-height: 600px;
   overflow: auto;
 }
+
 .ch-table-body-tr {
   cursor: pointer;
 }
+
 .ch-dropdown-container {
   margin-bottom: 5px;
   margin-top: 20px;
 }
+
 .ui-dropdown {
   width: 100%;
 }
+
 .cd-300-cnt {
   max-width: 300px;
   display: inline-block;
 }
+
 .ch-float-right {
   float: right;
 }
+
 .ch-filter-input-container input {
   width: 100%;
 }
+
 .ch-card-item-text {
   vertical-align: -webkit-baseline-middle;
 }
+
 .ch-card-item {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
 .ch-deposits-container {
   position: relative;
   min-height: 200px;
+}
+
+.ui-table-wrapper table {
+  min-width: 1000px;
+}
+
+body .ui-table .ui-table-thead>tr>th,
+body .ui-table .ui-table-tbody>tr>td {
+  overflow: hidden !important;
+}
+
+.ui-table-wrapper {
+  overflow: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .ch-md-none {
+    display: none !important;
+  }
+  .ui-menubar-custom {
+    display: none !important;
+  }
+  body .ui-menubar {
+    text-align: center;
+  }
+  .ui-menubar p-menubarsub {
+    float: none;
+  }
 }
