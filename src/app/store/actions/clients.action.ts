@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store'
 import { IUser } from '../../models/IUser'
 
-export enum EClientActions {
+export enum EClientsActions {
   GetClients = '[Clients] Get Clients',
   GetClientsSuccess = '[Clients] Get Clients Success',
   GetClientsFailed = '[Clients] Get Clients Failed',
@@ -10,25 +10,25 @@ export enum EClientActions {
 }
 
 export class GetClients implements Action {
-  public readonly type = EClientActions.GetClients
+  public readonly type = EClientsActions.GetClients
   constructor(public payload: string) {}
 }
 
 export class GetClientsSuccess implements Action {
-  public readonly type = EClientActions.GetClientsSuccess
+  public readonly type = EClientsActions.GetClientsSuccess
   constructor(public payload: { users: IUser[]; lastPage: number }) {}
 }
 
 export class GetClientsFailed implements Action {
-  public readonly type = EClientActions.GetClientsFailed
+  public readonly type = EClientsActions.GetClientsFailed
 }
 
 export class ClearClientsState implements Action {
-  public readonly type = EClientActions.ClearClientsState
+  public readonly type = EClientsActions.ClearClientsState
 }
 
 export class PrepareForNextCall implements Action {
-  public readonly type = EClientActions.PrepareForNextCall
+  public readonly type = EClientsActions.PrepareForNextCall
 }
 
 export type ClientsActions =

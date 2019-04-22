@@ -37,7 +37,7 @@ export class AddUserComponent {
         this.messageService.add({
           severity: 'error',
           summary: 'Ooops!!!',
-          detail: 'User has not been added'
+          detail: 'Client has not been added'
         })
       }
     )

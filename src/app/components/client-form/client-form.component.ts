@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { SelectItem } from 'primeng/api'
 import { CustomValidatorsService } from '../../services/custom-validators.service'
+import { IUser } from '../../models/IUser'
 
 @Component({
   selector: 'app-client-form',
@@ -11,6 +12,7 @@ import { CustomValidatorsService } from '../../services/custom-validators.servic
 export class ClientFormComponent implements OnInit {
   @Input() genders: string[]
   @Input() clearOnSubmit: boolean = true
+  @Input() client: IUser
   @Output() onSave: EventEmitter<any> = new EventEmitter<any>()
 
   get selectGenders(): SelectItem[] {
@@ -60,6 +62,14 @@ export class ClientFormComponent implements OnInit {
       actualAddress: ['', [Validators.required]],
       image: ['', [Validators.required, CustomValidatorsService.base64Image]]
     })
+  }
+
+  ngOnChanges(changes) {
+    if (changes.client) {
+      if (changes.client.currentValue) {
+        this.form.patchValue(changes.client.currentValue)
+      }
+    }
   }
 
   handleSave() {

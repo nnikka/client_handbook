@@ -1,4 +1,4 @@
-import { EClientActions, ClientsActions } from '../actions/clients.action'
+import { EClientsActions, ClientsActions } from '../actions/clients.action'
 import { IClientsState, initialClientsState } from '../state/clients.state'
 
 export const clientsReducer = (
@@ -6,7 +6,7 @@ export const clientsReducer = (
   action: ClientsActions
 ): IClientsState => {
   switch (action.type) {
-    case EClientActions.GetClientsSuccess: {
+    case EClientsActions.GetClientsSuccess: {
       return {
         ...state,
         clients: action.payload.users,
@@ -14,14 +14,14 @@ export const clientsReducer = (
         loaded: true
       }
     }
-    case EClientActions.GetClientsFailed: {
+    case EClientsActions.GetClientsFailed: {
       return {
         ...state,
         ...initialClientsState,
         failed: true
       }
     }
-    case EClientActions.PrepareForNextCall: {
+    case EClientsActions.PrepareForNextCall: {
       return {
         ...state,
         clients: initialClientsState.clients,
@@ -29,7 +29,7 @@ export const clientsReducer = (
         loaded: initialClientsState.loaded
       }
     }
-    case EClientActions.ClearClientsState: {
+    case EClientsActions.ClearClientsState: {
       return {
         ...initialClientsState
       }

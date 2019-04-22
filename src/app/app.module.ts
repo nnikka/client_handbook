@@ -17,6 +17,7 @@ import { CurrencyEffects } from './store/effects/currency.effects'
 import { DepositTypeEffects } from './store/effects/depositType.effects'
 import { GenderEffects } from './store/effects/gender.effects'
 import { ClientsEffects } from './store/effects/clients.effects'
+import { ClientEffects } from './store/effects/client.effects'
 
 //http interceptor
 import { HttpConfigInterceptor } from './httpConfig/httpConfig.interceptor'
@@ -33,8 +34,8 @@ import { ComponentLoaderOverlayComponent } from './components/component-loader-o
 import { ClientsComponent as ClientsContainer } from './containers/clients/clients.component'
 import { DataFilterComponent } from './components/data-filter/data-filter.component'
 import { DataTableComponent } from './components/data-table/data-table.component'
-import { DataPaginatorComponent } from './components/data-paginator/data-paginator.component';
-import { DataSorterComponent } from './components/data-sorter/data-sorter.component';
+import { DataPaginatorComponent } from './components/data-paginator/data-paginator.component'
+import { DataSorterComponent } from './components/data-sorter/data-sorter.component'
 import { ClientComponent as ClientContainer } from './containers/client/client.component'
 
 @NgModule({
@@ -69,7 +70,8 @@ import { ClientComponent as ClientContainer } from './containers/client/client.c
       CurrencyEffects,
       DepositTypeEffects,
       GenderEffects,
-      ClientsEffects
+      ClientsEffects,
+      ClientEffects
     ]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],

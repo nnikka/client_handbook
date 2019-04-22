@@ -18,6 +18,10 @@ export class ClientService {
     return this._http.post(this.clientUrl, user)
   }
 
+  edit(id: number, params: any): Observable<IUser> {
+    return this._http.put<IUser>(this.clientUrl + '/' + id, { ...params })
+  }
+
   getClients(query: string): Observable<any> {
     return this._http
       .get<any>(this.clientUrl + query, { observe: 'response' })
@@ -29,5 +33,9 @@ export class ClientService {
           return { users: users, lastPage: lastPage }
         })
       )
+  }
+
+  getClientById(id: number): Observable<IUser[]> {
+    return this._http.get<IUser[]>(this.clientUrl + '?id=' + id)
   }
 }

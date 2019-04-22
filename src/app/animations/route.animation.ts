@@ -25,7 +25,7 @@ export default trigger('routeAnimations', [
         ':leave',
         [
           style({ transform: 'translateY(0%)', opacity: 1 }),
-          animate('0.3s ease-in-out', style({ transform: 'translateY(20%)', opacity: 0 }))
+          animate('0.3s ease-in-out', style({ transform: 'translateY(10%)', opacity: 0 }))
         ],
         { optional: true }
       )

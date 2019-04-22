@@ -29,7 +29,8 @@ const routes: Routes = [
   {
     path: 'client/:id',
     component: ClientComponent,
-    data: { animation: 'client' }
+    data: { animation: 'client' },
+    resolve: { 'genders': GenderResolver }
   }
 ]
 

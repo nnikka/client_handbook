@@ -1,3 +1,14 @@
-<p>
-  client works!
-</p>
+<div><br></div>
+<div class="ui-g">
+  <div class="ui-g-12 ui-md-6 ui-lg-4">
+    <p-card header="Edit client">
+      <div class="ch-pos-relative" *ngIf="!(clientFailed$ | async); else chClientFailed">
+        <app-component-loader-overlay [loading]="!(clientLoaded$ | async) || clientIsUpdating"></app-component-loader-overlay>
+        <app-client-form [client]="client$ | async" [clearOnSubmit]="false" [genders]="genders$ | async" (onSave)="handleSave($event)"></app-client-form>
+      </div>
+      <ng-template #chClientFailed>
+        Failed to load client
+      </ng-template>
+    </p-card>
+  </div>
+</div>
