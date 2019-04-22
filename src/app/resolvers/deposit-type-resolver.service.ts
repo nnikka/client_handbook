@@ -3,28 +3,31 @@ import { Resolve } from '@angular/router'
 import { Observable } from 'rxjs'
 import { Store, select } from '@ngrx/store'
 import { IAppState } from '../store/state/app.state'
-import { selectGendeStatuses } from '../store/selectors/gender.selectors'
-import { GetGenders, ClearGenderState } from '../store/actions/gender.action'
+import { selectDepositTypeStatuses } from '../store/selectors/depositType.selectors'
+import {
+  GetDepositTypes,
+  ClearDepositTypeState
+} from '../store/actions/depositType.action'
 import { tap, filter, take, map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
-export class GenderResolver implements Resolve<boolean> {
+export class DepositTypeResolver implements Resolve<boolean> {
   constructor(private store: Store<IAppState>) {}
 
   resolve(): Observable<boolean> {
     return this.store.pipe(
-      select(selectGendeStatuses),
+      select(selectDepositTypeStatuses),
       tap((statuses: any) => {
         if (!statuses.loaded && !statuses.failed) {
-          this.store.dispatch(new GetGenders())
+          this.store.dispatch(new GetDepositTypes())
         }
       }),
       filter(statuses => {
         if (statuses.loaded) return true
         else if (statuses.failed) {
-          this.store.dispatch(new ClearGenderState())
+          this.store.dispatch(new ClearDepositTypeState())
           return true
         }
       }),

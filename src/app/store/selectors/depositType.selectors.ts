@@ -14,3 +14,10 @@ export const selectDepositTypeLoadStatus = createSelector(
   selectDepositType,
   (state: IDepositTypeState) => state.loaded
 )
+
+export const selectDepositTypeStatuses = createSelector(
+  selectDepositType,
+  (state: IDepositTypeState) => {
+    return { failed: state.failed, loaded: state.loaded }
+  }
+)

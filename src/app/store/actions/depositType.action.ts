@@ -3,7 +3,8 @@ import { Action } from '@ngrx/store'
 export enum EDepositTypeActions {
   GetDepositTypes = '[DepositType] Get DepositTypes',
   GetDepositTypesSuccess = '[DepositType] Get DepositTypes Success',
-  GetDepositTypesFailed = '[DepositType] Get DepositTypes Failed'
+  GetDepositTypesFailed = '[DepositType] Get DepositTypes Failed',
+  ClearDepositTypeState = '[DepositType] Clear DepositType State'
 }
 
 export class GetDepositTypes implements Action {
@@ -19,4 +20,12 @@ export class GetDepositTypesFailed implements Action {
   public readonly type = EDepositTypeActions.GetDepositTypesFailed
 }
 
-export type DepositTypeActions = GetDepositTypes | GetDepositTypesSuccess | GetDepositTypesFailed
+export class ClearDepositTypeState implements Action {
+  public readonly type = EDepositTypeActions.ClearDepositTypeState
+}
+
+export type DepositTypeActions =
+  | GetDepositTypes
+  | GetDepositTypesSuccess
+  | GetDepositTypesFailed
+  | ClearDepositTypeState

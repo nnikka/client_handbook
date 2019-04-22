@@ -10,6 +10,8 @@ import { ClientComponent } from './containers/client/client.component'
 import { GenderGuard } from './guards/gender.guard'
 
 import { GenderResolver } from './resolvers/gender-resolver.service'
+import { CurrencyResolver } from './resolvers/currency-resolver.service'
+import { DepositTypeResolver } from './resolvers/deposit-type-resolver.service'
 
 const routes: Routes = [
   { path: '', component: HomeComponent, data: { animation: 'Home' } },
@@ -24,13 +26,17 @@ const routes: Routes = [
     path: 'clients',
     component: ClientsComponent,
     data: { animation: 'clients' },
-    resolve: { 'genders': GenderResolver }
+    resolve: { genders: GenderResolver }
   },
   {
     path: 'client/:id',
     component: ClientComponent,
     data: { animation: 'client' },
-    resolve: { 'genders': GenderResolver }
+    resolve: {
+      genders: GenderResolver,
+      currencies: CurrencyResolver,
+      depositTypes: DepositTypeResolver
+    }
   }
 ]
 

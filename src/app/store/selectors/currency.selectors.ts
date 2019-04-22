@@ -14,3 +14,10 @@ export const selectCurrencyLoadStatus = createSelector(
   selectCurrency,
   (state: ICurrencyState) => state.loaded
 )
+
+export const selectCurrencyStatuses = createSelector(
+  selectCurrency,
+  (state: ICurrencyState) => {
+    return { failed: state.failed, loaded: state.loaded }
+  }
+)

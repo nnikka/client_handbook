@@ -25,6 +25,12 @@ export const depositTypeReducer = (
         ...initialDepositTypeState
       }
     }
+    case EDepositTypeActions.ClearDepositTypeState: {
+      return {
+        ...state,
+        ...initialDepositTypeState
+      }
+    }
     default:
       return state
   }

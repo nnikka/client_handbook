@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GenderResolver } from './gender-resolver.service';
+import { CurrencyResolver } from './currency-resolver.service';
 
-describe('GenderResolver', () => {
+describe('CurrencyResolver', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: GenderResolver = TestBed.get(GenderResolver);
+    const service: CurrencyResolver = TestBed.get(CurrencyResolver);
     expect(service).toBeTruthy();
   });
 });

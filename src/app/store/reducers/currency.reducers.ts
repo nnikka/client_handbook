@@ -19,6 +19,12 @@ export const currencyReducer = (
         ...initialCurrencyState
       }
     }
+    case ECurrencyActions.ClearCurrencyState: {
+      return {
+        ...state,
+        ...initialCurrencyState
+      }
+    }
     default:
       return state
   }
